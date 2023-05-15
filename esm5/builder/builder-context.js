@@ -1,0 +1,31 @@
+var _a;
+import { InjectorToken, makeDecorator } from '@fm/di';
+import { useBuilderContext } from '@dynamic/builder';
+export var VALIDATOR = InjectorToken.get('VALIDATOR');
+export var FORWARD_MICRO = InjectorToken.get('FORWARD_MICRO');
+export var FORWARD_BUILDER = InjectorToken.get('FORWARD_BUILDER');
+export var CONTROL_INTERCEPT = InjectorToken.get('CONTROL_INTERCEPT');
+export var builderPackage = function (baseName, parent) {
+    var getName = function (name) { return baseName + name; };
+    var builderContext = useBuilderContext(parent);
+    var Convert = makeDecorator(getName('Convert'), undefined, function (Type, name) {
+        builderContext.forwardConvert(name, Type);
+    });
+    var Action = makeDecorator(getName('Action'), undefined, function (Type, name, options) {
+        builderContext.forwardAction(name, Type, options);
+    });
+    var Validator = makeDecorator(getName('Validator'), undefined, function (Type, name) {
+        builderContext.forwardType(VALIDATOR, name, Type, 'validator');
+    });
+    var ControlIntercept = makeDecorator(getName('ControlIntercept'), undefined, function (Type) {
+        builderContext.forwardClass(CONTROL_INTERCEPT, Type);
+    });
+    var Extension = makeDecorator(getName('Extension'), undefined, function (Extension) {
+        builderContext.registryExtension([Extension]);
+    });
+    var forwardUiElement = function (name, Element) { return builderContext.forwardUiElement(name, Element); };
+    var forwardHocComponent = function (token, hot) { return (builderContext.forwardFactory(token, hot), hot); };
+    return { builderContext: builderContext, forwardUiElement: forwardUiElement, forwardHocComponent: forwardHocComponent, ControlIntercept: ControlIntercept, Convert: Convert, Action: Action, Validator: Validator, Extension: Extension };
+};
+// eslint-disable-next-line max-len
+export var builderContext = (_a = builderPackage('Root'), _a.builderContext), forwardUiElement = _a.forwardUiElement, forwardHocComponent = _a.forwardHocComponent, Validator = _a.Validator, ControlIntercept = _a.ControlIntercept, Convert = _a.Convert, Action = _a.Action, Extension = _a.Extension;

@@ -1,0 +1,18 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.TABLE = exports.SELECT = exports.LOADING = exports.INPUT = exports.ICON_LIST = exports.ICON_BUTTON = exports.ICON_BADGE = exports.ICON = exports.HTML = exports.ECHARTS = exports.BUTTON = exports.BUILDER_POPOVER = exports.BUILDER_CARD = exports.APEX_CHARTS = exports.BUILDER = void 0;
+exports.BUILDER = 'builder';
+exports.APEX_CHARTS = 'apex-charts';
+exports.BUILDER_CARD = 'builder-card';
+exports.BUILDER_POPOVER = 'builder-popover';
+exports.BUTTON = 'button';
+exports.ECHARTS = 'echarts';
+exports.HTML = 'html';
+exports.ICON = 'icon';
+exports.ICON_BADGE = 'icon-badge';
+exports.ICON_BUTTON = 'icon-button';
+exports.ICON_LIST = 'icon-list';
+exports.INPUT = 'input';
+exports.LOADING = 'loading';
+exports.SELECT = 'select';
+exports.TABLE = 'table';

@@ -1,0 +1,15 @@
+export var BUILDER = 'builder';
+export var APEX_CHARTS = 'apex-charts';
+export var BUILDER_CARD = 'builder-card';
+export var BUILDER_POPOVER = 'builder-popover';
+export var BUTTON = 'button';
+export var ECHARTS = 'echarts';
+export var HTML = 'html';
+export var ICON = 'icon';
+export var ICON_BADGE = 'icon-badge';
+export var ICON_BUTTON = 'icon-button';
+export var ICON_LIST = 'icon-list';
+export var INPUT = 'input';
+export var LOADING = 'loading';
+export var SELECT = 'select';
+export var TABLE = 'table';
