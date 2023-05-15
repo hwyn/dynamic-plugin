@@ -1,5 +1,5 @@
-import { Injector } from '@fm/di';
 import { BuilderModel } from '@dynamic/builder';
+import { Injector } from '@fm/di';
 export declare class PageBuilder extends BuilderModel {
     openLoading: any;
     closeLoading: any;

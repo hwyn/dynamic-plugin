@@ -2,9 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PageBuilder = void 0;
 var tslib_1 = require("tslib");
+var builder_1 = require("@dynamic/builder");
 var csr_1 = require("@fm/csr");
 var di_1 = require("@fm/di");
-var builder_1 = require("@dynamic/builder");
 var proxy_http_1 = require("./proxy-http");
 var PageBuilder = /** @class */ (function (_super) {
     tslib_1.__extends(PageBuilder, _super);

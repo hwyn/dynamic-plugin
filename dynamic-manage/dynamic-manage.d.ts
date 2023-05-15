@@ -1,5 +1,5 @@
-import { Injector } from '@fm/di';
 import type { BuilderField, BuilderModelExtensions, BuilderProps } from '@dynamic/builder';
+import { Injector } from '@fm/di';
 import { ElementProps } from '../builder/type-api';
 type BuilderUUID = {
     uuid: string;

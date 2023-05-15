@@ -1,7 +1,7 @@
 import { __decorate, __metadata } from "tslib";
+import { FACTORY_BUILDER, generateUUID } from '@dynamic/builder';
 import { JsonConfigService } from '@fm/csr';
 import { Injectable, Injector } from '@fm/di';
-import { FACTORY_BUILDER, generateUUID } from '@dynamic/builder';
 import { builderContext, CONTROL_INTERCEPT } from '../builder/builder-context';
 let DynamicManage = class DynamicManage {
     constructor(injector) {

@@ -2,8 +2,8 @@
 var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Extension = exports.Action = exports.Convert = exports.ControlIntercept = exports.Validator = exports.forwardHocComponent = exports.forwardUiElement = exports.builderContext = exports.builderPackage = exports.CONTROL_INTERCEPT = exports.FORWARD_BUILDER = exports.FORWARD_MICRO = exports.VALIDATOR = void 0;
-var di_1 = require("@fm/di");
 var builder_1 = require("@dynamic/builder");
+var di_1 = require("@fm/di");
 exports.VALIDATOR = di_1.InjectorToken.get('VALIDATOR');
 exports.FORWARD_MICRO = di_1.InjectorToken.get('FORWARD_MICRO');
 exports.FORWARD_BUILDER = di_1.InjectorToken.get('FORWARD_BUILDER');

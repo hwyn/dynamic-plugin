@@ -1,6 +1,6 @@
 import { __rest } from "tslib";
-import { Injector, setInjectableDef } from '@fm/di';
 import { makeBuilderDecorator } from '@dynamic/builder';
+import { Injector, setInjectableDef } from '@fm/di';
 import { forwardBuilder } from '../forward-builder/forward-builder';
 import { LoadConfig } from './actions/load-config';
 import { LoadingExtension } from './loading.extension';

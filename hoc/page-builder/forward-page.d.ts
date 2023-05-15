@@ -1,5 +1,5 @@
-import { Type } from '@fm/di';
 import { BuilderProps } from '@dynamic/builder';
+import { Type } from '@fm/di';
 export interface PageProps extends BuilderProps {
     [key: string]: any;
     pageClassName?: string;

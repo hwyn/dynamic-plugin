@@ -1,7 +1,7 @@
 import { __extends } from "tslib";
+import { BuilderModel, GET_JSON_CONFIG } from '@dynamic/builder';
 import { CustomHistory } from '@fm/csr';
 import { Injector } from '@fm/di';
-import { BuilderModel, GET_JSON_CONFIG } from '@dynamic/builder';
 import { PAGE_TOKEN, ProxyHttp } from './proxy-http';
 var PageBuilder = /** @class */ (function (_super) {
     __extends(PageBuilder, _super);

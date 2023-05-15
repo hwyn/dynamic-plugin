@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Control = exports.CREATE_FORM_CONTROL = void 0;
 var tslib_1 = require("tslib");
-var di_1 = require("@fm/di");
 var builder_1 = require("@dynamic/builder");
+var di_1 = require("@fm/di");
 var builder_context_1 = require("../../builder/builder-context");
 var base_validator_1 = require("./base-validator");
 exports.CREATE_FORM_CONTROL = di_1.InjectorToken.get('CREATE_FORM_CONTROL');

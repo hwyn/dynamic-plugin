@@ -1,6 +1,6 @@
 import { __decorate, __metadata } from "tslib";
-import { Inject, Injector, InjectorToken } from '@fm/di';
 import { GET_TYPE } from '@dynamic/builder';
+import { Inject, Injector, InjectorToken } from '@fm/di';
 import { ControlIntercept, VALIDATOR } from '../../builder/builder-context';
 import { BaseValidator } from './base-validator';
 export const CREATE_FORM_CONTROL = InjectorToken.get('CREATE_FORM_CONTROL');

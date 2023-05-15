@@ -1,6 +1,6 @@
+import { BuilderModel, GET_JSON_CONFIG } from '@dynamic/builder';
 import { CustomHistory } from '@fm/csr';
 import { Injector } from '@fm/di';
-import { BuilderModel, GET_JSON_CONFIG } from '@dynamic/builder';
 import { PAGE_TOKEN, ProxyHttp } from './proxy-http';
 export class PageBuilder extends BuilderModel {
     constructor(injector) {

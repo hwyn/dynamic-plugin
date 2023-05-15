@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PageBuilder = exports.forwardPage = void 0;
 var tslib_1 = require("tslib");
-var di_1 = require("@fm/di");
 var builder_1 = require("@dynamic/builder");
+var di_1 = require("@fm/di");
 var forward_builder_1 = require("../forward-builder/forward-builder");
 var load_config_1 = require("./actions/load-config");
 var loading_extension_1 = require("./loading.extension");
