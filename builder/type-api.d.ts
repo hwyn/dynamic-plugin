@@ -1,6 +1,12 @@
 import { Injector } from '@fm/di';
-import { FormControl, InstanceExtensions } from '@dynamic/builder';
+import { FormControl as FormControlIml, InstanceExtensions, ValidationErrors } from '@dynamic/builder';
 import { Observable } from 'rxjs';
+type FormControl = FormControlIml & {
+    touched: boolean;
+    errors: ValidationErrors | null;
+    invalid: boolean;
+    disabled: boolean;
+};
 export interface ElementProps {
     id: string;
     builderuuid: {
@@ -19,3 +25,4 @@ export interface ElementProps {
         [key: string]: (params?: any) => Observable<any>;
     };
 }
+export {};

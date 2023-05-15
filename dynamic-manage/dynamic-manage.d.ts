@@ -1,6 +1,5 @@
 import { Injector } from '@fm/di';
-import type { BuilderField, BuilderProps } from '@dynamic/builder';
-import { BuilderModel } from '@dynamic/builder';
+import type { BuilderField, BuilderModelExtensions, BuilderProps } from '@dynamic/builder';
 import { ElementProps } from '../builder/type-api';
 type BuilderUUID = {
     uuid: string;
@@ -14,8 +13,8 @@ export declare class DynamicManage {
     getForceUpdate(detectChanges: (uuid: string) => any): () => void;
     getElementProps<T extends ElementProps>(builderField: BuilderField): T;
     getBuilderUUID(): BuilderUUID;
-    factory(uuid: BuilderUUID, props: BuilderProps): BuilderModel;
-    getBuilder(uuid: BuilderUUID): BuilderModel;
+    factory(uuid: BuilderUUID, props: BuilderProps): BuilderModelExtensions;
+    getBuilder(uuid: BuilderUUID): BuilderModelExtensions;
     deleteBuilder(uuid: BuilderUUID): void;
 }
 export {};
