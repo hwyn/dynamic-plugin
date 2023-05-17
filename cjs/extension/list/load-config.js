@@ -15,7 +15,7 @@ var LoadConfig = /** @class */ (function (_super) {
         var _b = jsonField.dataSource, _c = _b === void 0 ? {} : _b, _d = _c.metadata, metadata = _d === void 0 ? {} : _d;
         return {
             grid: grid,
-            fields: source.map(function (s, index) { return (tslib_1.__assign(tslib_1.__assign({}, jsonField), { metadata: { targetIndex: index }, dataSource: tslib_1.__assign(tslib_1.__assign({}, metadata), { source: s }), id: "".concat(jsonField.id, "-").concat(s.id || s.key || index) })); })
+            fields: source.map(function (s, index) { return (tslib_1.__assign(tslib_1.__assign({}, jsonField), { metadata: { targetIndex: index }, dataSource: { metadata: metadata, source: s }, id: "".concat(jsonField.id, "-").concat(s.id || s.key || index) })); })
         };
     };
     tslib_1.__decorate([

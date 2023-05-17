@@ -6,7 +6,7 @@ let LoadConfig = class LoadConfig extends BaseAction {
         const { dataSource: { metadata = {} } = {} } = jsonField;
         return {
             grid,
-            fields: source.map((s, index) => (Object.assign(Object.assign({}, jsonField), { metadata: { targetIndex: index }, dataSource: Object.assign(Object.assign({}, metadata), { source: s }), id: `${jsonField.id}-${s.id || s.key || index}` })))
+            fields: source.map((s, index) => (Object.assign(Object.assign({}, jsonField), { metadata: { targetIndex: index }, dataSource: { metadata, source: s }, id: `${jsonField.id}-${s.id || s.key || index}` })))
         };
     }
 };
