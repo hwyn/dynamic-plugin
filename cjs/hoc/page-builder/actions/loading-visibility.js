@@ -14,13 +14,21 @@ var LoadingVisibility = /** @class */ (function (_super) {
         return _this;
     }
     LoadingVisibility.prototype.execute = function (_a) {
-        var _this = this;
         var callType = _a[0].type;
         callType === loading_extension_1.OPEN_LOADING ? this.count += 1 : this.count < 1 ? this.count = 0 : this.count -= 1;
-        if (this.count === 0 && !this.st && typeof window !== 'undefined') {
-            this.st = setTimeout(function () { return _this.builder.ready && _this.builder.detectChanges(); });
+        var isNone = this.count === 0;
+        if (isNone && typeof window !== 'undefined') {
+            this.asyncExec();
         }
-        return this.count === 0 ? builder_1.Visibility.none : builder_1.Visibility.visible;
+        return isNone ? builder_1.Visibility.none : builder_1.Visibility.visible;
+    };
+    LoadingVisibility.prototype.asyncExec = function () {
+        var _this = this;
+        this.st && clearInterval(this.st);
+        this.st = setTimeout(function () {
+            _this.builder.ready && _this.builder.detectChanges();
+            _this.st = null;
+        });
     };
     tslib_1.__decorate([
         tslib_1.__param(0, (0, builder_1.CallLink)()),

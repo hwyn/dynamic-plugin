@@ -10,10 +10,18 @@ let LoadingVisibility = class LoadingVisibility extends BaseAction {
     }
     execute([{ type: callType }]) {
         callType === OPEN_LOADING ? this.count += 1 : this.count < 1 ? this.count = 0 : this.count -= 1;
-        if (this.count === 0 && !this.st && typeof window !== 'undefined') {
-            this.st = setTimeout(() => this.builder.ready && this.builder.detectChanges());
+        const isNone = this.count === 0;
+        if (isNone && typeof window !== 'undefined') {
+            this.asyncExec();
         }
-        return this.count === 0 ? Visibility.none : Visibility.visible;
+        return isNone ? Visibility.none : Visibility.visible;
+    }
+    asyncExec() {
+        this.st && clearInterval(this.st);
+        this.st = setTimeout(() => {
+            this.builder.ready && this.builder.detectChanges();
+            this.st = null;
+        });
     }
 };
 __decorate([
