@@ -1,21 +1,18 @@
 import { __assign, __decorate, __metadata } from "tslib";
 import { FACTORY_BUILDER, generateUUID } from '@dynamic/builder';
-import { JsonConfigService } from '@fm/csr';
 import { Injectable, Injector } from '@fm/di';
 import { builderContext, CONTROL_INTERCEPT } from '../builder/builder-context';
+import { PLUGIN_GET_CONFIG } from '../token';
 var DynamicManage = /** @class */ (function () {
     function DynamicManage(injector) {
         this.injector = injector;
         this.builderCache = new Map();
         builderContext.forwardFormControl(this.formControl);
-        builderContext.forwardGetJsonConfig(this.getJsonConfig);
+        builderContext.forwardGetJsonConfig(injector.get(PLUGIN_GET_CONFIG));
         builderContext.registryInjector(this.injector);
     }
     DynamicManage.prototype.formControl = function (value, options, _injector) {
         return _injector.get(CONTROL_INTERCEPT).create(value, options);
-    };
-    DynamicManage.prototype.getJsonConfig = function (url, _injector) {
-        return _injector.get(JsonConfigService).getJsonConfig(url);
     };
     DynamicManage.prototype.getForceUpdate = function (detectChanges) {
         var detectChangesSt;

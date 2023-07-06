@@ -11,3 +11,4 @@ var extension_1 = require("./extension");
 Object.defineProperty(exports, "BaseValidator", { enumerable: true, get: function () { return extension_1.BaseValidator; } });
 Object.defineProperty(exports, "CREATE_FORM_CONTROL", { enumerable: true, get: function () { return extension_1.CREATE_FORM_CONTROL; } });
 tslib_1.__exportStar(require("./hoc"), exports);
+tslib_1.__exportStar(require("./token"), exports);

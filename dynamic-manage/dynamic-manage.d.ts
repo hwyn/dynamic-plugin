@@ -9,7 +9,6 @@ export declare class DynamicManage {
     private builderCache;
     constructor(injector: Injector);
     private formControl;
-    private getJsonConfig;
     getForceUpdate(detectChanges: (uuid: string) => any): () => void;
     getElementProps<T extends ElementProps>(builderField: BuilderField): T;
     getBuilderUUID(): BuilderUUID;

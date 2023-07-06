@@ -1,21 +1,18 @@
 import { __decorate, __metadata } from "tslib";
 import { FACTORY_BUILDER, generateUUID } from '@dynamic/builder';
-import { JsonConfigService } from '@fm/csr';
 import { Injectable, Injector } from '@fm/di';
 import { builderContext, CONTROL_INTERCEPT } from '../builder/builder-context';
+import { PLUGIN_GET_CONFIG } from '../token';
 let DynamicManage = class DynamicManage {
     constructor(injector) {
         this.injector = injector;
         this.builderCache = new Map();
         builderContext.forwardFormControl(this.formControl);
-        builderContext.forwardGetJsonConfig(this.getJsonConfig);
+        builderContext.forwardGetJsonConfig(injector.get(PLUGIN_GET_CONFIG));
         builderContext.registryInjector(this.injector);
     }
     formControl(value, options, _injector) {
         return _injector.get(CONTROL_INTERCEPT).create(value, options);
-    }
-    getJsonConfig(url, _injector) {
-        return _injector.get(JsonConfigService).getJsonConfig(url);
     }
     getForceUpdate(detectChanges) {
         let detectChangesSt;

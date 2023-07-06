@@ -1,7 +1,7 @@
 import { __decorate, __metadata, __param } from "tslib";
-import { HttpClient, JsonConfigService } from '@fm/csr';
 import { Inject, InjectorToken } from '@fm/di';
 import { finalize } from 'rxjs';
+import { PLUGIN_GET_CONFIG, PLUGIN_HTTP_CLIENT } from '../../token';
 export const PAGE_TOKEN = InjectorToken.get('PAGE_TOKEN');
 let ProxyHttp = class ProxyHttp {
     constructor(http, jc, page) {
@@ -20,7 +20,7 @@ let ProxyHttp = class ProxyHttp {
         return this.proxyLoading(this.http.getText(req, params));
     }
     getJsonConfig(url) {
-        return this.proxyLoading(this.jc.getJsonConfig(url));
+        return this.proxyLoading(this.jc(url));
     }
     post(req, params) {
         return this.proxyLoading(this.http.post(req, params));
@@ -36,10 +36,9 @@ let ProxyHttp = class ProxyHttp {
     }
 };
 ProxyHttp = __decorate([
-    __param(0, Inject(HttpClient)),
-    __param(1, Inject(JsonConfigService)),
+    __param(0, Inject(PLUGIN_HTTP_CLIENT)),
+    __param(1, Inject(PLUGIN_GET_CONFIG)),
     __param(2, Inject(PAGE_TOKEN)),
-    __metadata("design:paramtypes", [HttpClient,
-        JsonConfigService, Object])
+    __metadata("design:paramtypes", [Object, Function, Object])
 ], ProxyHttp);
 export { ProxyHttp };

@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.PageBuilder = void 0;
 var tslib_1 = require("tslib");
 var builder_1 = require("@dynamic/builder");
-var csr_1 = require("@fm/csr");
 var di_1 = require("@fm/di");
+var token_1 = require("../../token");
 var proxy_http_1 = require("./proxy-http");
 var PageBuilder = /** @class */ (function (_super) {
     tslib_1.__extends(PageBuilder, _super);
@@ -22,7 +22,7 @@ var PageBuilder = /** @class */ (function (_super) {
     }
     PageBuilder.prototype.routerHandler = function () {
         var _this = this;
-        var history = this.injector.get(csr_1.CustomHistory);
+        var history = this.injector.get(token_1.PLUGIN_HISTORY);
         if (history) {
             this.pushRoute = history.pushRoute.subscribe(function (result) { return _this._openLoading(result); });
             this.activeRoute = history.activeRoute.subscribe(function (result) { return _this._closeLoading(result); });

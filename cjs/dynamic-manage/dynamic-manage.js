@@ -3,22 +3,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.DynamicManage = void 0;
 var tslib_1 = require("tslib");
 var builder_1 = require("@dynamic/builder");
-var csr_1 = require("@fm/csr");
 var di_1 = require("@fm/di");
 var builder_context_1 = require("../builder/builder-context");
+var token_1 = require("../token");
 var DynamicManage = /** @class */ (function () {
     function DynamicManage(injector) {
         this.injector = injector;
         this.builderCache = new Map();
         builder_context_1.builderContext.forwardFormControl(this.formControl);
-        builder_context_1.builderContext.forwardGetJsonConfig(this.getJsonConfig);
+        builder_context_1.builderContext.forwardGetJsonConfig(injector.get(token_1.PLUGIN_GET_CONFIG));
         builder_context_1.builderContext.registryInjector(this.injector);
     }
     DynamicManage.prototype.formControl = function (value, options, _injector) {
         return _injector.get(builder_context_1.CONTROL_INTERCEPT).create(value, options);
-    };
-    DynamicManage.prototype.getJsonConfig = function (url, _injector) {
-        return _injector.get(csr_1.JsonConfigService).getJsonConfig(url);
     };
     DynamicManage.prototype.getForceUpdate = function (detectChanges) {
         var detectChangesSt;

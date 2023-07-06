@@ -1,6 +1,6 @@
 import { BuilderModel, GET_JSON_CONFIG } from '@dynamic/builder';
-import { CustomHistory } from '@fm/csr';
 import { Injector } from '@fm/di';
+import { PLUGIN_HISTORY } from '../../token';
 import { PAGE_TOKEN, ProxyHttp } from './proxy-http';
 export class PageBuilder extends BuilderModel {
     constructor(injector) {
@@ -15,7 +15,7 @@ export class PageBuilder extends BuilderModel {
         this.routerHandler();
     }
     routerHandler() {
-        const history = this.injector.get(CustomHistory);
+        const history = this.injector.get(PLUGIN_HISTORY);
         if (history) {
             this.pushRoute = history.pushRoute.subscribe((result) => this._openLoading(result));
             this.activeRoute = history.activeRoute.subscribe((result) => this._closeLoading(result));
