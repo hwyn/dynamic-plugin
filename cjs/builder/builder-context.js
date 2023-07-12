@@ -1,7 +1,8 @@
 "use strict";
 var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Extension = exports.Action = exports.Convert = exports.ControlIntercept = exports.Validator = exports.forwardHocComponent = exports.forwardUiElement = exports.builderContext = exports.builderPackage = exports.CONTROL_INTERCEPT = exports.FORWARD_BUILDER = exports.FORWARD_MICRO = exports.VALIDATOR = void 0;
+exports.Extension = exports.Action = exports.Convert = exports.ControlIntercept = exports.Validator = exports.UIElement = exports.forwardHocComponent = exports.forwardUiElement = exports.builderContext = exports.builderPackage = exports.CONTROL_INTERCEPT = exports.FORWARD_BUILDER = exports.FORWARD_MICRO = exports.VALIDATOR = void 0;
+/* eslint-disable max-lines-per-function */
 var builder_1 = require("@dynamic/builder");
 var di_1 = require("@fm/di");
 exports.VALIDATOR = di_1.InjectorToken.get('VALIDATOR');
@@ -26,10 +27,13 @@ var builderPackage = function (baseName, parent) {
     var Extension = (0, di_1.makeDecorator)(getName('Extension'), undefined, function (Extension) {
         builderContext.registryExtension([Extension]);
     });
+    var UIElement = (0, di_1.makeDecorator)(getName('UIElement'), undefined, function (Type, name) {
+        builderContext.forwardUiElement(name, Type);
+    });
     var forwardUiElement = function (name, Element) { return builderContext.forwardUiElement(name, Element); };
     var forwardHocComponent = function (token, hot) { return (builderContext.forwardFactory(token, hot), hot); };
-    return { builderContext: builderContext, forwardUiElement: forwardUiElement, forwardHocComponent: forwardHocComponent, ControlIntercept: ControlIntercept, Convert: Convert, Action: Action, Validator: Validator, Extension: Extension };
+    return { builderContext: builderContext, forwardUiElement: forwardUiElement, forwardHocComponent: forwardHocComponent, UIElement: UIElement, ControlIntercept: ControlIntercept, Convert: Convert, Action: Action, Validator: Validator, Extension: Extension };
 };
 exports.builderPackage = builderPackage;
 // eslint-disable-next-line max-len
-exports.builderContext = (_a = (0, exports.builderPackage)('Root'), _a.builderContext), exports.forwardUiElement = _a.forwardUiElement, exports.forwardHocComponent = _a.forwardHocComponent, exports.Validator = _a.Validator, exports.ControlIntercept = _a.ControlIntercept, exports.Convert = _a.Convert, exports.Action = _a.Action, exports.Extension = _a.Extension;
+exports.builderContext = (_a = (0, exports.builderPackage)('Root'), _a.builderContext), exports.forwardUiElement = _a.forwardUiElement, exports.forwardHocComponent = _a.forwardHocComponent, exports.UIElement = _a.UIElement, exports.Validator = _a.Validator, exports.ControlIntercept = _a.ControlIntercept, exports.Convert = _a.Convert, exports.Action = _a.Action, exports.Extension = _a.Extension;

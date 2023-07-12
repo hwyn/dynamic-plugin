@@ -1,6 +1,6 @@
 import { __decorate, __metadata, __param } from "tslib";
 import { Inject, InjectorToken } from '@fm/di';
-import { finalize } from 'rxjs';
+import { finalize } from 'rxjs/operators';
 import { PLUGIN_GET_CONFIG, PLUGIN_HTTP_CLIENT } from '../../token';
 export const PAGE_TOKEN = InjectorToken.get('PAGE_TOKEN');
 let ProxyHttp = class ProxyHttp {

@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 import { useBuilderContext } from '@dynamic/builder';
 import { InjectorToken, makeDecorator } from '@fm/di';
 export const VALIDATOR = InjectorToken.get('VALIDATOR');
@@ -22,9 +23,12 @@ export const builderPackage = (baseName, parent) => {
     const Extension = makeDecorator(getName('Extension'), undefined, (Extension) => {
         builderContext.registryExtension([Extension]);
     });
+    const UIElement = makeDecorator(getName('UIElement'), undefined, (Type, name) => {
+        builderContext.forwardUiElement(name, Type);
+    });
     const forwardUiElement = (name, Element) => builderContext.forwardUiElement(name, Element);
     const forwardHocComponent = (token, hot) => (builderContext.forwardFactory(token, hot), hot);
-    return { builderContext, forwardUiElement, forwardHocComponent, ControlIntercept, Convert, Action, Validator, Extension };
+    return { builderContext, forwardUiElement, forwardHocComponent, UIElement, ControlIntercept, Convert, Action, Validator, Extension };
 };
 // eslint-disable-next-line max-len
-export const { builderContext, forwardUiElement, forwardHocComponent, Validator, ControlIntercept, Convert, Action, Extension } = builderPackage('Root');
+export const { builderContext, forwardUiElement, forwardHocComponent, UIElement, Validator, ControlIntercept, Convert, Action, Extension } = builderPackage('Root');

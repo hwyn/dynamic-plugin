@@ -1,4 +1,5 @@
 var _a;
+/* eslint-disable max-lines-per-function */
 import { useBuilderContext } from '@dynamic/builder';
 import { InjectorToken, makeDecorator } from '@fm/di';
 export var VALIDATOR = InjectorToken.get('VALIDATOR');
@@ -23,9 +24,12 @@ export var builderPackage = function (baseName, parent) {
     var Extension = makeDecorator(getName('Extension'), undefined, function (Extension) {
         builderContext.registryExtension([Extension]);
     });
+    var UIElement = makeDecorator(getName('UIElement'), undefined, function (Type, name) {
+        builderContext.forwardUiElement(name, Type);
+    });
     var forwardUiElement = function (name, Element) { return builderContext.forwardUiElement(name, Element); };
     var forwardHocComponent = function (token, hot) { return (builderContext.forwardFactory(token, hot), hot); };
-    return { builderContext: builderContext, forwardUiElement: forwardUiElement, forwardHocComponent: forwardHocComponent, ControlIntercept: ControlIntercept, Convert: Convert, Action: Action, Validator: Validator, Extension: Extension };
+    return { builderContext: builderContext, forwardUiElement: forwardUiElement, forwardHocComponent: forwardHocComponent, UIElement: UIElement, ControlIntercept: ControlIntercept, Convert: Convert, Action: Action, Validator: Validator, Extension: Extension };
 };
 // eslint-disable-next-line max-len
-export var builderContext = (_a = builderPackage('Root'), _a.builderContext), forwardUiElement = _a.forwardUiElement, forwardHocComponent = _a.forwardHocComponent, Validator = _a.Validator, ControlIntercept = _a.ControlIntercept, Convert = _a.Convert, Action = _a.Action, Extension = _a.Extension;
+export var builderContext = (_a = builderPackage('Root'), _a.builderContext), forwardUiElement = _a.forwardUiElement, forwardHocComponent = _a.forwardHocComponent, UIElement = _a.UIElement, Validator = _a.Validator, ControlIntercept = _a.ControlIntercept, Convert = _a.Convert, Action = _a.Action, Extension = _a.Extension;

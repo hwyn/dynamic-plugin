@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProxyHttp = exports.PAGE_TOKEN = void 0;
 var tslib_1 = require("tslib");
 var di_1 = require("@fm/di");
-var rxjs_1 = require("rxjs");
+var operators_1 = require("rxjs/operators");
 var token_1 = require("../../token");
 exports.PAGE_TOKEN = di_1.InjectorToken.get('PAGE_TOKEN');
 var ProxyHttp = /** @class */ (function () {
@@ -15,7 +15,7 @@ var ProxyHttp = /** @class */ (function () {
     ProxyHttp.prototype.proxyLoading = function (obs) {
         var _this = this;
         var st = setTimeout(function () { return (_this.page._openLoading(), st = null); });
-        return obs.pipe((0, rxjs_1.finalize)(function () { return st ? clearTimeout(st) : _this.page._closeLoading(); }));
+        return obs.pipe((0, operators_1.finalize)(function () { return st ? clearTimeout(st) : _this.page._closeLoading(); }));
     };
     ProxyHttp.prototype.get = function (req, params) {
         return this.proxyLoading(this.http.get(req, params));
