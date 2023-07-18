@@ -4,7 +4,7 @@ export declare const CREATE_FORM_CONTROL: InjectorToken;
 export declare class Control {
     private injector;
     private getType;
-    createFormControl: (value: any, controlOptions: ControlOptions) => FormControl;
+    createFormControl: (value: any, controlOptions: ControlOptions, options: FormOptions) => FormControl;
     constructor(injector: Injector);
     private getValidatorFn;
     private getOption;

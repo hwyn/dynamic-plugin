@@ -10,10 +10,10 @@ var Control = /** @class */ (function () {
     }
     Control.prototype.getValidatorFn = function (config, options) {
         var validatorFn;
-        var context = __assign(__assign({}, options), { config: config });
+        var context = __assign(__assign({ injector: this.injector }, options), { config: config });
         var builderHandler = options.builder.getExecuteHandler(config.name, false);
         if (builderHandler) {
-            validatorFn = builderHandler(new BaseValidator().invoke(__assign({ injector: this.injector }, context)));
+            builderHandler(new BaseValidator().invoke(context)).subscribe(function (fn) { return validatorFn = fn; });
         }
         if (!validatorFn) {
             var validatorType = config instanceof BaseValidator ? config : this.getType(VALIDATOR, config.name);
@@ -40,7 +40,7 @@ var Control = /** @class */ (function () {
             asyncValidators: this.getOption(validators, options, true)
         };
         delete field.validators;
-        return this.createFormControl(value, controlOptions);
+        return this.createFormControl(value, controlOptions, options);
     };
     __decorate([
         Inject(GET_TYPE),

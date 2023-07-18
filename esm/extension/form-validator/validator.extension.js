@@ -21,7 +21,7 @@ let ValidatorExtension = class ValidatorExtension extends BasicExtension {
         isNeedRefresh && control.touched && instance.detectChanges();
     }
     beforeDestroy() {
-        this.validatorFields.forEach(({ control }) => control.clearValidator());
+        this.validatorFields.forEach(({ control }) => control.clearValidators());
         return super.beforeDestroy();
     }
 };

@@ -10,10 +10,10 @@ let Control = class Control {
     }
     getValidatorFn(config, options) {
         let validatorFn;
-        const context = Object.assign(Object.assign({}, options), { config });
+        const context = Object.assign(Object.assign({ injector: this.injector }, options), { config });
         const builderHandler = options.builder.getExecuteHandler(config.name, false);
         if (builderHandler) {
-            validatorFn = builderHandler(new BaseValidator().invoke(Object.assign({ injector: this.injector }, context)));
+            builderHandler(new BaseValidator().invoke(context)).subscribe((fn) => validatorFn = fn);
         }
         if (!validatorFn) {
             const validatorType = config instanceof BaseValidator ? config : this.getType(VALIDATOR, config.name);
@@ -36,7 +36,7 @@ let Control = class Control {
             asyncValidators: this.getOption(validators, options, true)
         };
         delete field.validators;
-        return this.createFormControl(value, controlOptions);
+        return this.createFormControl(value, controlOptions, options);
     }
 };
 __decorate([

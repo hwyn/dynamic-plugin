@@ -32,7 +32,7 @@ var ValidatorExtension = /** @class */ (function (_super) {
     ValidatorExtension.prototype.beforeDestroy = function () {
         this.validatorFields.forEach(function (_a) {
             var control = _a.control;
-            return control.clearValidator();
+            return control.clearValidators();
         });
         return _super.prototype.beforeDestroy.call(this);
     };

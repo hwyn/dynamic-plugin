@@ -13,10 +13,10 @@ var Control = /** @class */ (function () {
     }
     Control.prototype.getValidatorFn = function (config, options) {
         var validatorFn;
-        var context = tslib_1.__assign(tslib_1.__assign({}, options), { config: config });
+        var context = tslib_1.__assign(tslib_1.__assign({ injector: this.injector }, options), { config: config });
         var builderHandler = options.builder.getExecuteHandler(config.name, false);
         if (builderHandler) {
-            validatorFn = builderHandler(new base_validator_1.BaseValidator().invoke(tslib_1.__assign({ injector: this.injector }, context)));
+            builderHandler(new base_validator_1.BaseValidator().invoke(context)).subscribe(function (fn) { return validatorFn = fn; });
         }
         if (!validatorFn) {
             var validatorType = config instanceof base_validator_1.BaseValidator ? config : this.getType(builder_context_1.VALIDATOR, config.name);
@@ -43,7 +43,7 @@ var Control = /** @class */ (function () {
             asyncValidators: this.getOption(validators, options, true)
         };
         delete field.validators;
-        return this.createFormControl(value, controlOptions);
+        return this.createFormControl(value, controlOptions, options);
     };
     tslib_1.__decorate([
         (0, di_1.Inject)(builder_1.GET_TYPE),
