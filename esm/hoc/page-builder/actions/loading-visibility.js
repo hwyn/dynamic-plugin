@@ -21,7 +21,7 @@ let LoadingVisibility = class LoadingVisibility extends BaseAction {
         this.st = setTimeout(() => {
             this.builder.ready && this.builder.detectChanges();
             this.st = null;
-        });
+        }, 1);
     }
 };
 __decorate([

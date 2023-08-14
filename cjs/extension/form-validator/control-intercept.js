@@ -4,6 +4,7 @@ exports.Control = exports.CREATE_FORM_CONTROL = void 0;
 var tslib_1 = require("tslib");
 var builder_1 = require("@dynamic/builder");
 var di_1 = require("@fm/di");
+var rxjs_1 = require("rxjs");
 var builder_context_1 = require("../../builder/builder-context");
 var base_validator_1 = require("./base-validator");
 exports.CREATE_FORM_CONTROL = di_1.InjectorToken.get('CREATE_FORM_CONTROL');
@@ -14,9 +15,10 @@ var Control = /** @class */ (function () {
     Control.prototype.getValidatorFn = function (config, options) {
         var validatorFn;
         var context = tslib_1.__assign(tslib_1.__assign({ injector: this.injector }, options), { config: config });
-        var builderHandler = options.builder.getExecuteHandler(config.name, false);
-        if (builderHandler) {
-            builderHandler(new base_validator_1.BaseValidator().invoke(context)).subscribe(function (fn) { return validatorFn = fn; });
+        var _a = (0, builder_1.serializeAction)(config), name = _a.name, _b = _a.handler, handler = _b === void 0 ? name && options.builder.getExecuteHandler(name, false) : _b;
+        if (handler) {
+            var result = handler(new base_validator_1.BaseValidator().invoke(context));
+            ((0, rxjs_1.isObservable)(result) ? result : (0, rxjs_1.of)(result)).subscribe(function (fn) { return validatorFn = fn; });
         }
         if (!validatorFn) {
             var validatorType = config instanceof base_validator_1.BaseValidator ? config : this.getType(builder_context_1.VALIDATOR, config.name);

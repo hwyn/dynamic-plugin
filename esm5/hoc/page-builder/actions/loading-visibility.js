@@ -25,7 +25,7 @@ var LoadingVisibility = /** @class */ (function (_super) {
         this.st = setTimeout(function () {
             _this.builder.ready && _this.builder.detectChanges();
             _this.st = null;
-        });
+        }, 1);
     };
     __decorate([
         __param(0, CallLink()),

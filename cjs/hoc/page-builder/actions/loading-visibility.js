@@ -28,7 +28,7 @@ var LoadingVisibility = /** @class */ (function (_super) {
         this.st = setTimeout(function () {
             _this.builder.ready && _this.builder.detectChanges();
             _this.st = null;
-        });
+        }, 1);
     };
     tslib_1.__decorate([
         tslib_1.__param(0, (0, builder_1.CallLink)()),

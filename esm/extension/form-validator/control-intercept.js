@@ -1,6 +1,7 @@
 import { __decorate, __metadata } from "tslib";
-import { GET_TYPE } from '@dynamic/builder';
+import { GET_TYPE, serializeAction } from '@dynamic/builder';
 import { Inject, Injector, InjectorToken } from '@fm/di';
+import { isObservable, of } from 'rxjs';
 import { ControlIntercept, VALIDATOR } from '../../builder/builder-context';
 import { BaseValidator } from './base-validator';
 export const CREATE_FORM_CONTROL = InjectorToken.get('CREATE_FORM_CONTROL');
@@ -11,9 +12,10 @@ let Control = class Control {
     getValidatorFn(config, options) {
         let validatorFn;
         const context = Object.assign(Object.assign({ injector: this.injector }, options), { config });
-        const builderHandler = options.builder.getExecuteHandler(config.name, false);
-        if (builderHandler) {
-            builderHandler(new BaseValidator().invoke(context)).subscribe((fn) => validatorFn = fn);
+        const { name, handler = name && options.builder.getExecuteHandler(name, false) } = serializeAction(config);
+        if (handler) {
+            const result = handler(new BaseValidator().invoke(context));
+            (isObservable(result) ? result : of(result)).subscribe((fn) => validatorFn = fn);
         }
         if (!validatorFn) {
             const validatorType = config instanceof BaseValidator ? config : this.getType(VALIDATOR, config.name);
