@@ -19,7 +19,7 @@ let ValidatorExtension = class ValidatorExtension extends BasicExtension {
         const isNeedRefresh = updateOn !== changeType;
         this.pushCalculators(jsonField, {
             action: this.bindCalculatorAction(this.makeAsTouched.bind(undefined, isNeedRefresh)),
-            dependents: this.toArray(updateOn).map((type) => ({ type: type, fieldId: id }))
+            dependents: this.toArray(updateOn).map((type) => ({ type, fieldId: id }))
         });
         delete builderField.field.updateOn;
     }
