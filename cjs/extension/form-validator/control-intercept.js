@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Control = exports.CREATE_FORM_CONTROL = void 0;
+exports.ControlIntercept = exports.CREATE_FORM_CONTROL = void 0;
 var tslib_1 = require("tslib");
 var builder_1 = require("@dynamic/builder");
 var di_1 = require("@fm/di");
@@ -8,11 +8,11 @@ var rxjs_1 = require("rxjs");
 var builder_context_1 = require("../../builder/builder-context");
 var base_validator_1 = require("./base-validator");
 exports.CREATE_FORM_CONTROL = di_1.InjectorToken.get('CREATE_FORM_CONTROL');
-var Control = /** @class */ (function () {
-    function Control(injector) {
+var ControlIntercept = /** @class */ (function () {
+    function ControlIntercept(injector) {
         this.injector = injector;
     }
-    Control.prototype.getValidatorFn = function (config, options) {
+    ControlIntercept.prototype.getValidatorFn = function (config, options) {
         var validatorFn;
         var context = tslib_1.__assign(tslib_1.__assign({ injector: this.injector }, options), { config: config });
         var _a = (0, builder_1.serializeAction)(config), name = _a.name, _b = _a.handler, handler = _b === void 0 ? name && options.builder.getExecuteHandler(name, false) : _b;
@@ -30,7 +30,7 @@ var Control = /** @class */ (function () {
         }
         return validatorFn;
     };
-    Control.prototype.getOption = function (configs, options, isAsync) {
+    ControlIntercept.prototype.getOption = function (configs, options, isAsync) {
         var _this = this;
         var filterConfig = configs.filter(function (_a) {
             var async = _a.async;
@@ -38,27 +38,29 @@ var Control = /** @class */ (function () {
         });
         return filterConfig.map(function (config) { return _this.getValidatorFn(config, options); });
     };
-    Control.prototype.create = function (value, options) {
-        var _a = options.builderField, field = _a.field, _b = _a.field.validators, validators = _b === void 0 ? [] : _b;
-        var controlOptions = {
-            validators: this.getOption(validators, options),
-            asyncValidators: this.getOption(validators, options, true)
-        };
-        delete field.validators;
-        return this.createFormControl(value, controlOptions, options);
+    ControlIntercept.prototype.updateValidators = function (validators, options) {
+        var control = options.builderField.control;
+        if (control) {
+            control.clearValidators();
+            control.setValidators(this.getOption(validators, options));
+            control.setAsyncValidators(this.getOption(validators, options, true));
+        }
+    };
+    ControlIntercept.prototype.create = function (value, options) {
+        return this.createFormControl(value, {}, options);
     };
     tslib_1.__decorate([
         (0, di_1.Inject)(builder_1.GET_TYPE),
         tslib_1.__metadata("design:type", Object)
-    ], Control.prototype, "getType", void 0);
+    ], ControlIntercept.prototype, "getType", void 0);
     tslib_1.__decorate([
         (0, di_1.Inject)(exports.CREATE_FORM_CONTROL),
         tslib_1.__metadata("design:type", Function)
-    ], Control.prototype, "createFormControl", void 0);
-    Control = tslib_1.__decorate([
+    ], ControlIntercept.prototype, "createFormControl", void 0);
+    ControlIntercept = tslib_1.__decorate([
         (0, builder_context_1.ControlIntercept)(),
         tslib_1.__metadata("design:paramtypes", [di_1.Injector])
-    ], Control);
-    return Control;
+    ], ControlIntercept);
+    return ControlIntercept;
 }());
-exports.Control = Control;
+exports.ControlIntercept = ControlIntercept;

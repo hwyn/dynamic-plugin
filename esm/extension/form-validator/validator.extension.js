@@ -1,8 +1,12 @@
 import { __decorate } from "tslib";
-import { BasicExtension, CHANGE } from '@dynamic/builder';
+import { BasicExtension, CALCULATOR, CHANGE, CREATE_CONTROL } from '@dynamic/builder';
 import { isEmpty } from 'lodash';
-import { Extension } from '../../builder/builder-context';
+import { CONTROL_INTERCEPT, Extension } from '../../builder/builder-context';
 let ValidatorExtension = class ValidatorExtension extends BasicExtension {
+    constructor() {
+        super(...arguments);
+        this.controlIntercept = this.injector.get(CONTROL_INTERCEPT);
+    }
     beforeExtension() {
         this.jsonFields.forEach((jsonField) => {
             if (jsonField.validators) {
@@ -12,16 +16,34 @@ let ValidatorExtension = class ValidatorExtension extends BasicExtension {
     }
     extension() {
         const fields = this.jsonFields.filter(({ validators }) => !isEmpty(validators));
-        this.validatorFields = this.mapFields(fields, this.eachFile.bind(this));
+        this.validatorFields = this.mapFields(fields, this.addFieldCalculators.bind(this));
     }
-    eachFile([jsonField, builderField]) {
+    addFieldCalculators([jsonField, builderField]) {
+        this.pushCalculators(jsonField, [
+            this.serializeValidatorConfig(jsonField),
+            this.addTouchedCalculator(jsonField)
+        ]);
+        delete builderField.field.validators;
+        delete builderField.field.updateOn;
+    }
+    addTouchedCalculator(jsonField) {
         const { id, binding: { changeType }, updateOn = changeType } = jsonField;
         const isNeedRefresh = updateOn !== changeType;
-        this.pushCalculators(jsonField, {
+        return {
             action: this.bindCalculatorAction(this.makeAsTouched.bind(undefined, isNeedRefresh)),
             dependents: this.toArray(updateOn).map((type) => ({ type, fieldId: id }))
-        });
-        delete builderField.field.updateOn;
+        };
+    }
+    serializeValidatorConfig(jsonField) {
+        const { validators: jsonValidators = [] } = jsonField;
+        const action = !Array.isArray(jsonValidators) ? jsonValidators : () => jsonValidators;
+        const defaultDependents = { type: CREATE_CONTROL, fieldId: jsonField.id };
+        const validators = this.serializeCalculatorConfig(action, CALCULATOR, defaultDependents);
+        validators.action.after = this.bindCalculatorAction(this.updateValidators.bind(this));
+        return validators;
+    }
+    updateValidators({ actionEvent = [], builderField }) {
+        this.controlIntercept.updateValidators(actionEvent, { builderField, builder: this.builder });
     }
     makeAsTouched(isNeedRefresh, { builderField }) {
         const { control, instance } = builderField;
