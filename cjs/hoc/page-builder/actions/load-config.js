@@ -16,7 +16,8 @@ var LoadConfig = /** @class */ (function (_super) {
     }
     LoadConfig.prototype.execute = function (id, _a) {
         var props = _a.props, Model = _a.Model;
-        return [{
+        var _b = props.loading, loading = _b === void 0 ? true : _b, others = tslib_1.__rest(props, ["loading"]);
+        return tslib_1.__spreadArray(tslib_1.__spreadArray([], loading ? [{
                 id: ui_element_consts_1.LOADING,
                 type: ui_element_consts_1.LOADING,
                 checkVisibility: {
@@ -27,10 +28,12 @@ var LoadConfig = /** @class */ (function (_super) {
                         { type: loading_extension_1.CLOSE_LOADING, fieldId: id }
                     ]
                 }
-            }, tslib_1.__assign({ id: CONTAINER, type: ui_element_consts_1.BUILDER, preloaded: false, BuilderModel: Model, dataSource: function (_a) {
+            }] : [], true), [
+            tslib_1.__assign({ id: CONTAINER, type: ui_element_consts_1.BUILDER, preloaded: false, BuilderModel: Model, dataSource: function (_a) {
                     var actionEvent = _a.actionEvent;
                     return actionEvent;
-                } }, props)];
+                } }, others)
+        ], false);
     };
     tslib_1.__decorate([
         tslib_1.__param(0, (0, builder_1.Event)('id')),

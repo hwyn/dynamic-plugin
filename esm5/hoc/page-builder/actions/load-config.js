@@ -1,4 +1,4 @@
-import { __assign, __decorate, __extends, __metadata, __param } from "tslib";
+import { __assign, __decorate, __extends, __metadata, __param, __rest, __spreadArray } from "tslib";
 /* eslint-disable max-classes-per-file */
 import { ActionProps, BaseAction, Event, generateUUID, LOAD } from '@dynamic/builder';
 import { Action } from '../../../builder/builder-context';
@@ -13,7 +13,8 @@ var LoadConfig = /** @class */ (function (_super) {
     }
     LoadConfig.prototype.execute = function (id, _a) {
         var props = _a.props, Model = _a.Model;
-        return [{
+        var _b = props.loading, loading = _b === void 0 ? true : _b, others = __rest(props, ["loading"]);
+        return __spreadArray(__spreadArray([], loading ? [{
                 id: LOADING,
                 type: LOADING,
                 checkVisibility: {
@@ -24,10 +25,12 @@ var LoadConfig = /** @class */ (function (_super) {
                         { type: CLOSE_LOADING, fieldId: id }
                     ]
                 }
-            }, __assign({ id: CONTAINER, type: BUILDER, preloaded: false, BuilderModel: Model, dataSource: function (_a) {
+            }] : [], true), [
+            __assign({ id: CONTAINER, type: BUILDER, preloaded: false, BuilderModel: Model, dataSource: function (_a) {
                     var actionEvent = _a.actionEvent;
                     return actionEvent;
-                } }, props)];
+                } }, others)
+        ], false);
     };
     __decorate([
         __param(0, Event('id')),

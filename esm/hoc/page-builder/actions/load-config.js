@@ -1,4 +1,4 @@
-import { __decorate, __metadata, __param } from "tslib";
+import { __decorate, __metadata, __param, __rest } from "tslib";
 /* eslint-disable max-classes-per-file */
 import { ActionProps, BaseAction, Event, generateUUID, LOAD } from '@dynamic/builder';
 import { Action } from '../../../builder/builder-context';
@@ -8,18 +8,22 @@ import { LoadingVisibility } from './loading-visibility';
 const CONTAINER = 'container';
 let LoadConfig = class LoadConfig extends BaseAction {
     execute(id, { props, Model }) {
-        return [{
-                id: LOADING,
-                type: LOADING,
-                checkVisibility: {
-                    action: LoadingVisibility.actionName,
-                    dependents: [
-                        { type: LOAD, fieldId: props.id || CONTAINER },
-                        { type: OPEN_LOADING, fieldId: id },
-                        { type: CLOSE_LOADING, fieldId: id }
-                    ]
-                }
-            }, Object.assign({ id: CONTAINER, type: BUILDER, preloaded: false, BuilderModel: Model, dataSource: ({ actionEvent }) => actionEvent }, props)];
+        const { loading = true } = props, others = __rest(props, ["loading"]);
+        return [
+            ...loading ? [{
+                    id: LOADING,
+                    type: LOADING,
+                    checkVisibility: {
+                        action: LoadingVisibility.actionName,
+                        dependents: [
+                            { type: LOAD, fieldId: props.id || CONTAINER },
+                            { type: OPEN_LOADING, fieldId: id },
+                            { type: CLOSE_LOADING, fieldId: id }
+                        ]
+                    }
+                }] : [],
+            Object.assign({ id: CONTAINER, type: BUILDER, preloaded: false, BuilderModel: Model, dataSource: ({ actionEvent }) => actionEvent }, others)
+        ];
     }
 };
 __decorate([
