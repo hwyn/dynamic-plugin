@@ -6,7 +6,7 @@ export declare class ProxyHttp {
     private jc;
     private page;
     constructor(http: any, jc: (url: string) => Observable<any>, page: any);
-    private proxyLoading;
+    proxyLoading<T>(obs: Observable<T>): Observable<T>;
     get(req: RequestInfo | string, params?: RequestInit): Observable<unknown>;
     getText(req: RequestInfo | string, params?: RequestInit): Observable<unknown>;
     getJsonConfig(url: string): Observable<any>;

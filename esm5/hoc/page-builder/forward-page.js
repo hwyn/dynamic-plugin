@@ -10,7 +10,7 @@ export function forwardPage(Model, _a) {
     var factory = function (injector) { return new PageBuilderModel(injector); };
     var provider = { provide: factory, providedIn: 'any', useFactory: factory, deps: [Injector] };
     return forwardBuilder(setInjectableDef(factory, provider), {
-        privateExtension: [LoadingExtension],
+        extension: [LoadingExtension],
         className: ['page-container', pageClassName].join(' '),
         configAction: { name: LoadConfig.actionName, params: { props: props, Model: Model } }
     });
