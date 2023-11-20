@@ -9,10 +9,11 @@ export function forwardPage(Model, _a) {
     var { pageClassName } = _a, props = __rest(_a, ["pageClassName"]);
     const factory = (injector) => new PageBuilderModel(injector);
     const provider = { provide: factory, providedIn: 'any', useFactory: factory, deps: [Injector] };
-    return forwardBuilder(setInjectableDef(factory, provider), {
+    const Component = forwardBuilder(setInjectableDef(factory, provider), {
         extension: [LoadingExtension],
         className: ['page-container', pageClassName].join(' '),
         configAction: { name: LoadConfig.actionName, params: { props, Model } }
     });
+    return Object.defineProperty(Model, 'componentDef', { value: Component, writable: false });
 }
 export const PageBuilder = makeBuilderDecorator('PageBuilder', forwardPage);
