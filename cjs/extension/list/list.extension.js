@@ -12,11 +12,11 @@ var ListExtension = /** @class */ (function (_super) {
     function ListExtension() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.jsonGrid = _this.json.grid;
-        _this.proxyFields = [];
+        _this.proxyFields = _this.initProxyFields();
         return _this;
     }
-    ListExtension.prototype.beforeExtension = function () {
-        this.proxyFields = this.mapFields(this.jsonFields.filter(function (_a) {
+    ListExtension.prototype.initProxyFields = function () {
+        return this.mapFields(this.jsonFields.filter(function (_a) {
             var listMetadata = _a.listMetadata;
             return !(0, lodash_1.isEmpty)(listMetadata);
         }), this.cloneField.bind(this));

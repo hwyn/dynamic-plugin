@@ -8,10 +8,10 @@ let ListExtension = class ListExtension extends BasicExtension {
     constructor() {
         super(...arguments);
         this.jsonGrid = this.json.grid;
-        this.proxyFields = [];
+        this.proxyFields = this.initProxyFields();
     }
-    beforeExtension() {
-        this.proxyFields = this.mapFields(this.jsonFields.filter(({ listMetadata }) => !isEmpty(listMetadata)), this.cloneField.bind(this));
+    initProxyFields() {
+        return this.mapFields(this.jsonFields.filter(({ listMetadata }) => !isEmpty(listMetadata)), this.cloneField.bind(this));
     }
     extension() {
         this.eachFields(this.proxyFields, this.proxyField.bind(this));
