@@ -44,10 +44,10 @@ var ListExtension = /** @class */ (function (_super) {
         var listLayout = listMetadata.listLayout, justify = listMetadata.justify, alignItems = listMetadata.alignItems, _d = listMetadata.spacing, spacing = _d === void 0 ? (_b = this.jsonGrid) === null || _b === void 0 ? void 0 : _b.spacing : _d;
         var params = { grid: { spacing: spacing, justify: justify, alignItems: alignItems }, jsonField: tslib_1.__assign(tslib_1.__assign({}, otherJsonField), { layout: listLayout }) };
         var configAction = { name: load_config_1.LoadConfig.actionName, params: params };
-        builderField.element = (0, forward_builder_1.forwardBuilder)(builder_1.BuilderModel, { configAction: configAction });
         if (this.isBuildField(jsonField)) {
             this.builderAttr.forEach(function (key) { return delete builderField.field[key]; });
         }
+        builderField.element = (0, forward_builder_1.forwardBuilder)(builder_1.BuilderModel, { configAction: configAction });
     };
     ListExtension.prototype.resetElement = function (cloneJsonField, builderField, dataSource) {
         cloneJsonField.dataSource.source = dataSource;

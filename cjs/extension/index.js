@@ -6,4 +6,5 @@ var base_validator_1 = require("./form-validator/base-validator");
 Object.defineProperty(exports, "BaseValidator", { enumerable: true, get: function () { return base_validator_1.BaseValidator; } });
 tslib_1.__exportStar(require("./form-validator/control-intercept"), exports);
 tslib_1.__exportStar(require("./form-validator/validator.extension"), exports);
+tslib_1.__exportStar(require("./forward-element/forward-element.extension"), exports);
 tslib_1.__exportStar(require("./list/list.extension"), exports);

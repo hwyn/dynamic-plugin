@@ -30,10 +30,10 @@ let ListExtension = class ListExtension extends BasicExtension {
         const { listLayout, justify, alignItems, spacing = (_a = this.jsonGrid) === null || _a === void 0 ? void 0 : _a.spacing } = listMetadata;
         const params = { grid: { spacing, justify, alignItems }, jsonField: Object.assign(Object.assign({}, otherJsonField), { layout: listLayout }) };
         const configAction = { name: LoadConfig.actionName, params };
-        builderField.element = forwardBuilder(BuilderModel, { configAction });
         if (this.isBuildField(jsonField)) {
             this.builderAttr.forEach((key) => delete builderField.field[key]);
         }
+        builderField.element = forwardBuilder(BuilderModel, { configAction });
     }
     resetElement(cloneJsonField, builderField, dataSource) {
         cloneJsonField.dataSource.source = dataSource;
