@@ -37,15 +37,24 @@ var DynamicManage = /** @class */ (function () {
     DynamicManage.prototype.getBuilderUUID = function () {
         return Object.create({ uuid: (0, builder_1.generateUUID)(1) });
     };
+    DynamicManage.prototype.addFieldUUID = function (uuid) {
+        var builder = this.getBuilder(uuid);
+        if (builder.$$cache.destroyed)
+            return;
+        var ld = builder.listenerDetect.subscribe(function () {
+            builder.$$cache.fields.forEach(function (field) { return field.builderuuid = uuid; });
+            ld.unsubscribe();
+        });
+        if (builder.ready)
+            builder.detectChanges();
+    };
     DynamicManage.prototype.factory = function (uuid, props) {
         var model = this.getBuilder(uuid);
         if (!model) {
             var builder = this.builderCache.get(props.builderuuid);
             model = this.injector.get(builder_1.FACTORY_BUILDER)(tslib_1.__assign({ builder: builder }, props));
             this.builderCache.set(uuid, model);
-        }
-        if (model.ready && !model.$$cache.destroyed) {
-            model.$$cache.fields.forEach(function (field) { return field.builderuuid = uuid; });
+            this.addFieldUUID(uuid);
         }
         return model;
     };

@@ -12,6 +12,7 @@ export declare class DynamicManage {
     getForceUpdate(detectChanges: (uuid: string) => any): () => void;
     getElementProps<T extends ElementProps>(builderField: BuilderField): T;
     getBuilderUUID(): BuilderUUID;
+    private addFieldUUID;
     factory(uuid: BuilderUUID, props: BuilderProps): BuilderModelExtensions;
     getBuilder(uuid: BuilderUUID): BuilderModelExtensions;
     deleteBuilder(uuid: BuilderUUID): void;

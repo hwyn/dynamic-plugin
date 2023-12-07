@@ -33,15 +33,24 @@ let DynamicManage = class DynamicManage {
     getBuilderUUID() {
         return Object.create({ uuid: generateUUID(1) });
     }
+    addFieldUUID(uuid) {
+        const builder = this.getBuilder(uuid);
+        if (builder.$$cache.destroyed)
+            return;
+        const ld = builder.listenerDetect.subscribe(() => {
+            builder.$$cache.fields.forEach((field) => field.builderuuid = uuid);
+            ld.unsubscribe();
+        });
+        if (builder.ready)
+            builder.detectChanges();
+    }
     factory(uuid, props) {
         let model = this.getBuilder(uuid);
         if (!model) {
             const builder = this.builderCache.get(props.builderuuid);
             model = this.injector.get(FACTORY_BUILDER)(Object.assign({ builder }, props));
             this.builderCache.set(uuid, model);
-        }
-        if (model.ready && !model.$$cache.destroyed) {
-            model.$$cache.fields.forEach((field) => field.builderuuid = uuid);
+            this.addFieldUUID(uuid);
         }
         return model;
     }
