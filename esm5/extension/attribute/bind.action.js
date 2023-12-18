@@ -19,7 +19,8 @@ var Bind = /** @class */ (function (_super) {
     };
     Bind.prototype.execute = function (bindAttr) {
         var code = /(\w+)\((.*?)\)(?=\s*)/ig.test(bindAttr) ? this.executeMethod(bindAttr) : this.parseTemplate(bindAttr);
-        return new Function('meta', '$', "return ".concat(code))(this.meta, __assign(__assign({}, this.builderField), { viewModel: this.builder.viewModel }));
+        var fn = new Function('meta', '$', '$action', "return ".concat(code, ";\n"));
+        return fn(this.meta, __assign(__assign({}, this.builderField), { viewModel: this.builder.viewModel }), this);
     };
     __decorate([
         Inject(META_TYPE),

@@ -1,5 +1,5 @@
 import { __assign, __decorate, __extends, __metadata, __param, __rest, __spreadArray } from "tslib";
-import { ActionProps, BaseAction, Event, generateUUID, LOAD } from '@dynamic/builder';
+import { ActionProps, BaseAction, Event, LOAD } from '@dynamic/builder';
 import { Action } from '../../../builder/builder-context';
 import { BUILDER, LOADING } from '../../../constst/ui-element.consts';
 import { CLOSE_LOADING, OPEN_LOADING } from '../loading.extension';
@@ -37,7 +37,7 @@ var LoadConfig = /** @class */ (function (_super) {
         __metadata("design:returntype", void 0)
     ], LoadConfig.prototype, "execute", null);
     LoadConfig = __decorate([
-        Action("page-".concat(generateUUID(3)))
+        Action("PAGE-BB388BFF")
     ], LoadConfig);
     return LoadConfig;
 }(BaseAction));

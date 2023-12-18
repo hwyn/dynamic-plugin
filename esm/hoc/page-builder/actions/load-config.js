@@ -1,5 +1,5 @@
 import { __decorate, __metadata, __param, __rest } from "tslib";
-import { ActionProps, BaseAction, Event, generateUUID, LOAD } from '@dynamic/builder';
+import { ActionProps, BaseAction, Event, LOAD } from '@dynamic/builder';
 import { Action } from '../../../builder/builder-context';
 import { BUILDER, LOADING } from '../../../constst/ui-element.consts';
 import { CLOSE_LOADING, OPEN_LOADING } from '../loading.extension';
@@ -35,6 +35,6 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], LoadConfig.prototype, "execute", null);
 LoadConfig = __decorate([
-    Action(`page-${generateUUID(3)}`)
+    Action(`PAGE-BB388BFF`)
 ], LoadConfig);
 export { LoadConfig };

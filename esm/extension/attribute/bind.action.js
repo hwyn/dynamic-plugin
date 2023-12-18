@@ -14,7 +14,8 @@ let Bind = class Bind extends BaseAction {
     }
     execute(bindAttr) {
         const code = /(\w+)\((.*?)\)(?=\s*)/ig.test(bindAttr) ? this.executeMethod(bindAttr) : this.parseTemplate(bindAttr);
-        return new Function('meta', '$', `return ${code}`)(this.meta, Object.assign(Object.assign({}, this.builderField), { viewModel: this.builder.viewModel }));
+        const fn = new Function('meta', '$', '$action', `return ${code};\n`);
+        return fn(this.meta, Object.assign(Object.assign({}, this.builderField), { viewModel: this.builder.viewModel }), this);
     }
 };
 __decorate([

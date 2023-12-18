@@ -22,7 +22,8 @@ var Bind = /** @class */ (function (_super) {
     };
     Bind.prototype.execute = function (bindAttr) {
         var code = /(\w+)\((.*?)\)(?=\s*)/ig.test(bindAttr) ? this.executeMethod(bindAttr) : this.parseTemplate(bindAttr);
-        return new Function('meta', '$', "return ".concat(code))(this.meta, tslib_1.__assign(tslib_1.__assign({}, this.builderField), { viewModel: this.builder.viewModel }));
+        var fn = new Function('meta', '$', '$action', "return ".concat(code, ";\n"));
+        return fn(this.meta, tslib_1.__assign(tslib_1.__assign({}, this.builderField), { viewModel: this.builder.viewModel }), this);
     };
     tslib_1.__decorate([
         (0, di_1.Inject)(builder_1.META_TYPE),

@@ -37,7 +37,7 @@ var LoadingVisibility = /** @class */ (function (_super) {
         tslib_1.__metadata("design:returntype", void 0)
     ], LoadingVisibility.prototype, "execute", null);
     LoadingVisibility = tslib_1.__decorate([
-        (0, builder_context_1.Action)("page-".concat((0, builder_1.generateUUID)(3)), { cache: true })
+        (0, builder_context_1.Action)("PAGE-EFB814E9", { cache: true })
     ], LoadingVisibility);
     return LoadingVisibility;
 }(builder_1.BaseAction));

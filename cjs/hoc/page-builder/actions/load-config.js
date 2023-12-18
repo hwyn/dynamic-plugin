@@ -40,7 +40,7 @@ var LoadConfig = /** @class */ (function (_super) {
         tslib_1.__metadata("design:returntype", void 0)
     ], LoadConfig.prototype, "execute", null);
     LoadConfig = tslib_1.__decorate([
-        (0, builder_context_1.Action)("page-".concat((0, builder_1.generateUUID)(3)))
+        (0, builder_context_1.Action)("PAGE-BB388BFF")
     ], LoadConfig);
     return LoadConfig;
 }(builder_1.BaseAction));
