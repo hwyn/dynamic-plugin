@@ -4,6 +4,7 @@ exports.DynamicManage = void 0;
 var tslib_1 = require("tslib");
 var builder_1 = require("@dynamic/builder");
 var di_1 = require("@fm/di");
+var lodash_1 = require("lodash");
 var builder_context_1 = require("../builder/builder-context");
 var token_1 = require("../token");
 var DynamicManage = /** @class */ (function () {
@@ -27,12 +28,11 @@ var DynamicManage = /** @class */ (function () {
     DynamicManage.prototype.getElementProps = function (builderField) {
         var id = builderField.id, builderuuid = builderField.builderuuid, instance = builderField.instance, _a = builderField.field, field = _a === void 0 ? {} : _a;
         var injector = this.getBuilder(builderuuid).injector;
-        var propsExists = ['source', 'control', 'events', 'visibility'].reduce(function (exists, key) {
-            var _a;
-            var value = builderField[key];
-            return Object.assign(exists, typeof value !== 'undefined' ? (_a = {}, _a[key] = value, _a) : {});
-        }, {});
-        return tslib_1.__assign(tslib_1.__assign({ id: id, injector: injector, builderuuid: builderuuid, instance: instance }, propsExists), field);
+        var isNotEvent = ['onCheckVisibility'];
+        var isExists = ['source', 'control', 'visibility'];
+        var events = (0, lodash_1.omitBy)(builderField.events, function (_item, key) { return isNotEvent.includes(key); });
+        var propsExists = (0, lodash_1.omitBy)(builderField, function (item, key) { return !isExists.includes(key) && typeof item !== 'undefined'; });
+        return tslib_1.__assign(tslib_1.__assign(tslib_1.__assign({ id: id, injector: injector, builderuuid: builderuuid, instance: instance }, propsExists), { events: events }), field);
     };
     DynamicManage.prototype.getBuilderUUID = function () {
         return Object.create({ uuid: (0, builder_1.generateUUID)(1) });

@@ -1,6 +1,7 @@
 import { __decorate, __metadata } from "tslib";
 import { FACTORY_BUILDER, generateUUID } from '@dynamic/builder';
 import { Injectable, Injector } from '@fm/di';
+import { omitBy } from 'lodash';
 import { builderContext, CONTROL_INTERCEPT } from '../builder/builder-context';
 import { PLUGIN_GET_CONFIG } from '../token';
 let DynamicManage = class DynamicManage {
@@ -24,11 +25,11 @@ let DynamicManage = class DynamicManage {
     getElementProps(builderField) {
         const { id, builderuuid, instance, field = {} } = builderField;
         const { injector } = this.getBuilder(builderuuid);
-        const propsExists = ['source', 'control', 'events', 'visibility'].reduce((exists, key) => {
-            const value = builderField[key];
-            return Object.assign(exists, typeof value !== 'undefined' ? { [key]: value } : {});
-        }, {});
-        return Object.assign(Object.assign({ id, injector, builderuuid, instance }, propsExists), field);
+        const isNotEvent = ['onCheckVisibility'];
+        const isExists = ['source', 'control', 'visibility'];
+        const events = omitBy(builderField.events, (_item, key) => isNotEvent.includes(key));
+        const propsExists = omitBy(builderField, (item, key) => !isExists.includes(key) && typeof item !== 'undefined');
+        return Object.assign(Object.assign(Object.assign({ id, injector, builderuuid, instance }, propsExists), { events }), field);
     }
     getBuilderUUID() {
         return Object.create({ uuid: generateUUID(1) });

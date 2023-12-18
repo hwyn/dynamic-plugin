@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BaseValidator = void 0;
 var tslib_1 = require("tslib");
+tslib_1.__exportStar(require("./attribute/attribute.extension"), exports);
 var base_validator_1 = require("./form-validator/base-validator");
 Object.defineProperty(exports, "BaseValidator", { enumerable: true, get: function () { return base_validator_1.BaseValidator; } });
 tslib_1.__exportStar(require("./form-validator/control-intercept"), exports);

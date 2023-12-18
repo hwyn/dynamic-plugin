@@ -23,8 +23,8 @@ export const builderPackage = (baseName, parent) => {
     const Extension = makeDecorator(getName('Extension'), undefined, (Extension) => {
         builderContext.registryExtension([Extension]);
     });
-    const UIElement = (name) => (Type) => builderContext.forwardUiElement(name, Type);
     const forwardUiElement = (name, Element) => builderContext.forwardUiElement(name, Element);
+    const UIElement = (name) => (Type) => forwardUiElement(name, Type);
     const forwardHocComponent = (token, hot) => (builderContext.forwardFactory(token, hot), hot);
     return { builderContext, forwardUiElement, forwardHocComponent, UIElement, ControlIntercept, Convert, Action, Validator, Extension };
 };

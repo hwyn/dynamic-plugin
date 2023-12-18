@@ -24,8 +24,8 @@ export var builderPackage = function (baseName, parent) {
     var Extension = makeDecorator(getName('Extension'), undefined, function (Extension) {
         builderContext.registryExtension([Extension]);
     });
-    var UIElement = function (name) { return function (Type) { return builderContext.forwardUiElement(name, Type); }; };
     var forwardUiElement = function (name, Element) { return builderContext.forwardUiElement(name, Element); };
+    var UIElement = function (name) { return function (Type) { return forwardUiElement(name, Type); }; };
     var forwardHocComponent = function (token, hot) { return (builderContext.forwardFactory(token, hot), hot); };
     return { builderContext: builderContext, forwardUiElement: forwardUiElement, forwardHocComponent: forwardHocComponent, UIElement: UIElement, ControlIntercept: ControlIntercept, Convert: Convert, Action: Action, Validator: Validator, Extension: Extension };
 };

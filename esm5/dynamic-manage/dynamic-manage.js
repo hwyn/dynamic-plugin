@@ -1,6 +1,7 @@
 import { __assign, __decorate, __metadata } from "tslib";
 import { FACTORY_BUILDER, generateUUID } from '@dynamic/builder';
 import { Injectable, Injector } from '@fm/di';
+import { omitBy } from 'lodash';
 import { builderContext, CONTROL_INTERCEPT } from '../builder/builder-context';
 import { PLUGIN_GET_CONFIG } from '../token';
 var DynamicManage = /** @class */ (function () {
@@ -24,12 +25,11 @@ var DynamicManage = /** @class */ (function () {
     DynamicManage.prototype.getElementProps = function (builderField) {
         var id = builderField.id, builderuuid = builderField.builderuuid, instance = builderField.instance, _a = builderField.field, field = _a === void 0 ? {} : _a;
         var injector = this.getBuilder(builderuuid).injector;
-        var propsExists = ['source', 'control', 'events', 'visibility'].reduce(function (exists, key) {
-            var _a;
-            var value = builderField[key];
-            return Object.assign(exists, typeof value !== 'undefined' ? (_a = {}, _a[key] = value, _a) : {});
-        }, {});
-        return __assign(__assign({ id: id, injector: injector, builderuuid: builderuuid, instance: instance }, propsExists), field);
+        var isNotEvent = ['onCheckVisibility'];
+        var isExists = ['source', 'control', 'visibility'];
+        var events = omitBy(builderField.events, function (_item, key) { return isNotEvent.includes(key); });
+        var propsExists = omitBy(builderField, function (item, key) { return !isExists.includes(key) && typeof item !== 'undefined'; });
+        return __assign(__assign(__assign({ id: id, injector: injector, builderuuid: builderuuid, instance: instance }, propsExists), { events: events }), field);
     };
     DynamicManage.prototype.getBuilderUUID = function () {
         return Object.create({ uuid: generateUUID(1) });

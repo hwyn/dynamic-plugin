@@ -1,5 +1,4 @@
 import { __assign, __decorate, __extends, __metadata, __param, __rest, __spreadArray } from "tslib";
-/* eslint-disable max-classes-per-file */
 import { ActionProps, BaseAction, Event, generateUUID, LOAD } from '@dynamic/builder';
 import { Action } from '../../../builder/builder-context';
 import { BUILDER, LOADING } from '../../../constst/ui-element.consts';
@@ -11,32 +10,30 @@ var LoadConfig = /** @class */ (function (_super) {
     function LoadConfig() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    LoadConfig.prototype.execute = function (id, _a) {
-        var props = _a.props, Model = _a.Model;
-        var _b = props.loading, loading = _b === void 0 ? true : _b, others = __rest(props, ["loading"]);
+    LoadConfig.prototype.execute = function (_a, _b) {
+        var id = _a.id, pageProps = __rest(_a, ["id"]);
+        var props = _b.props, Model = _b.Model;
+        var _c = props.loading, loading = _c === void 0 ? true : _c, others = __rest(props, ["loading"]);
         return __spreadArray(__spreadArray([], loading ? [{
                 id: LOADING,
                 type: LOADING,
                 checkVisibility: {
                     action: LoadingVisibility.actionName,
                     dependents: [
-                        { type: LOAD, fieldId: props.id || CONTAINER },
+                        { type: LOAD, fieldId: props.id || CONTAINER, nonSelf: true },
                         { type: OPEN_LOADING, fieldId: id },
                         { type: CLOSE_LOADING, fieldId: id }
                     ]
                 }
             }] : [], true), [
-            __assign({ id: CONTAINER, type: BUILDER, preloaded: false, BuilderModel: Model, dataSource: function (_a) {
-                    var actionEvent = _a.actionEvent;
-                    return actionEvent;
-                } }, others)
+            __assign({ id: CONTAINER, type: BUILDER, preloaded: false, BuilderModel: Model, pageProps: pageProps }, others)
         ], false);
     };
     __decorate([
-        __param(0, Event('id')),
+        __param(0, Event()),
         __param(1, ActionProps('params')),
         __metadata("design:type", Function),
-        __metadata("design:paramtypes", [String, Object]),
+        __metadata("design:paramtypes", [Object, Object]),
         __metadata("design:returntype", void 0)
     ], LoadConfig.prototype, "execute", null);
     LoadConfig = __decorate([

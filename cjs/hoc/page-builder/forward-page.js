@@ -13,6 +13,7 @@ function forwardPage(Model, _a) {
     var factory = function (injector) { return new page_builder_1.PageBuilder(injector); };
     var provider = { provide: factory, providedIn: 'any', useFactory: factory, deps: [di_1.Injector] };
     var Component = (0, forward_builder_1.forwardBuilder)((0, di_1.setInjectableDef)(factory, provider), {
+        id: (0, builder_1.generateUUID)(8),
         extension: [loading_extension_1.LoadingExtension],
         className: ['page-container', pageClassName].join(' '),
         configAction: { name: load_config_1.LoadConfig.actionName, params: { props: props, Model: Model } }

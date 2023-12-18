@@ -1,5 +1,4 @@
 import { __decorate, __metadata, __param, __rest } from "tslib";
-/* eslint-disable max-classes-per-file */
 import { ActionProps, BaseAction, Event, generateUUID, LOAD } from '@dynamic/builder';
 import { Action } from '../../../builder/builder-context';
 import { BUILDER, LOADING } from '../../../constst/ui-element.consts';
@@ -7,7 +6,9 @@ import { CLOSE_LOADING, OPEN_LOADING } from '../loading.extension';
 import { LoadingVisibility } from './loading-visibility';
 const CONTAINER = 'container';
 let LoadConfig = class LoadConfig extends BaseAction {
-    execute(id, { props, Model }) {
+    execute(_a, _b) {
+        var { id } = _a, pageProps = __rest(_a, ["id"]);
+        var props = _b.props, Model = _b.Model;
         const { loading = true } = props, others = __rest(props, ["loading"]);
         return [
             ...loading ? [{
@@ -16,21 +17,21 @@ let LoadConfig = class LoadConfig extends BaseAction {
                     checkVisibility: {
                         action: LoadingVisibility.actionName,
                         dependents: [
-                            { type: LOAD, fieldId: props.id || CONTAINER },
+                            { type: LOAD, fieldId: props.id || CONTAINER, nonSelf: true },
                             { type: OPEN_LOADING, fieldId: id },
                             { type: CLOSE_LOADING, fieldId: id }
                         ]
                     }
                 }] : [],
-            Object.assign({ id: CONTAINER, type: BUILDER, preloaded: false, BuilderModel: Model, dataSource: ({ actionEvent }) => actionEvent }, others)
+            Object.assign({ id: CONTAINER, type: BUILDER, preloaded: false, BuilderModel: Model, pageProps: pageProps }, others)
         ];
     }
 };
 __decorate([
-    __param(0, Event('id')),
+    __param(0, Event()),
     __param(1, ActionProps('params')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", void 0)
 ], LoadConfig.prototype, "execute", null);
 LoadConfig = __decorate([

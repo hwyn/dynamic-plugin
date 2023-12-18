@@ -1,5 +1,5 @@
 import { __rest } from "tslib";
-import { makeBuilderDecorator } from '@dynamic/builder';
+import { generateUUID, makeBuilderDecorator } from '@dynamic/builder';
 import { Injector, setInjectableDef } from '@fm/di';
 import { forwardBuilder } from '../forward-builder/forward-builder';
 import { LoadConfig } from './actions/load-config';
@@ -10,6 +10,7 @@ export function forwardPage(Model, _a) {
     const factory = (injector) => new PageBuilderModel(injector);
     const provider = { provide: factory, providedIn: 'any', useFactory: factory, deps: [Injector] };
     const Component = forwardBuilder(setInjectableDef(factory, provider), {
+        id: generateUUID(8),
         extension: [LoadingExtension],
         className: ['page-container', pageClassName].join(' '),
         configAction: { name: LoadConfig.actionName, params: { props, Model } }

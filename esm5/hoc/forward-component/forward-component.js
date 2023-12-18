@@ -1,3 +1,7 @@
-import { makeBuilderDecorator } from '@dynamic/builder';
+import { __assign } from "tslib";
+import { generateUUID, makeBuilderDecorator } from '@dynamic/builder';
 import { setComponentDef } from '../forward-builder/forward-builder';
-export var ComponentBuilder = makeBuilderDecorator('ComponentBuilder', setComponentDef);
+function forwardComponent(Model, props) {
+    return setComponentDef(Model, __assign({ id: generateUUID(8) }, props));
+}
+export var ComponentBuilder = makeBuilderDecorator('ComponentBuilder', forwardComponent);
