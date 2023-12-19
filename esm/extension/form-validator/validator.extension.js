@@ -28,9 +28,8 @@ let ValidatorExtension = class ValidatorExtension extends BasicExtension {
     }
     addTouchedCalculator(jsonField) {
         const { id, binding: { changeType }, updateOn = changeType } = jsonField;
-        const isNeedRefresh = updateOn !== changeType;
         return {
-            action: this.bindCalculatorAction(this.makeAsTouched.bind(undefined, isNeedRefresh)),
+            action: this.bindCalculatorAction(this.makeAsTouched.bind(undefined)),
             dependents: this.toArray(updateOn).map((type) => ({ type, fieldId: id }))
         };
     }
@@ -45,11 +44,10 @@ let ValidatorExtension = class ValidatorExtension extends BasicExtension {
     updateValidators({ actionEvent = [], builderField }) {
         this.controlIntercept.updateValidators(actionEvent, { builderField, builder: this.builder });
     }
-    makeAsTouched(isNeedRefresh, { builderField }) {
+    makeAsTouched({ builderField }) {
         const { control, instance } = builderField;
         control.updateValueAndValidity();
         instance.current && !control.touched && control.markAsTouched();
-        isNeedRefresh && control.touched && instance.detectChanges();
     }
     beforeDestroy() {
         this.validatorFields.forEach(({ control }) => control.clearValidators());

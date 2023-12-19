@@ -15,6 +15,6 @@ export declare class ValidatorExtension extends BasicExtension {
     };
     protected serializeValidatorConfig(jsonField: any): any;
     protected updateValidators({ actionEvent, builderField }: BaseAction): void;
-    protected makeAsTouched(isNeedRefresh: boolean, { builderField }: BaseAction): void;
+    protected makeAsTouched({ builderField }: BaseAction): void;
     protected beforeDestroy(): void | Observable<any>;
 }

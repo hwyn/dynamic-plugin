@@ -34,9 +34,8 @@ var ValidatorExtension = /** @class */ (function (_super) {
     };
     ValidatorExtension.prototype.addTouchedCalculator = function (jsonField) {
         var id = jsonField.id, changeType = jsonField.binding.changeType, _a = jsonField.updateOn, updateOn = _a === void 0 ? changeType : _a;
-        var isNeedRefresh = updateOn !== changeType;
         return {
-            action: this.bindCalculatorAction(this.makeAsTouched.bind(undefined, isNeedRefresh)),
+            action: this.bindCalculatorAction(this.makeAsTouched.bind(undefined)),
             dependents: this.toArray(updateOn).map(function (type) { return ({ type: type, fieldId: id }); })
         };
     };
@@ -52,12 +51,11 @@ var ValidatorExtension = /** @class */ (function (_super) {
         var _b = _a.actionEvent, actionEvent = _b === void 0 ? [] : _b, builderField = _a.builderField;
         this.controlIntercept.updateValidators(actionEvent, { builderField: builderField, builder: this.builder });
     };
-    ValidatorExtension.prototype.makeAsTouched = function (isNeedRefresh, _a) {
+    ValidatorExtension.prototype.makeAsTouched = function (_a) {
         var builderField = _a.builderField;
         var _b = builderField, control = _b.control, instance = _b.instance;
         control.updateValueAndValidity();
         instance.current && !control.touched && control.markAsTouched();
-        isNeedRefresh && control.touched && instance.detectChanges();
     };
     ValidatorExtension.prototype.beforeDestroy = function () {
         this.validatorFields.forEach(function (_a) {
