@@ -9,8 +9,8 @@ var builder_context_1 = require("../builder/builder-context");
 var token_1 = require("../token");
 var DynamicManage = /** @class */ (function () {
     function DynamicManage(injector) {
-        this.injector = injector;
         this.builderCache = new Map();
+        this.injector = di_1.Injector.create([], injector);
         builder_context_1.builderContext.forwardFormControl(this.formControl);
         builder_context_1.builderContext.forwardGetJsonConfig(injector.get(token_1.PLUGIN_GET_CONFIG));
         builder_context_1.builderContext.registryInjector(this.injector);

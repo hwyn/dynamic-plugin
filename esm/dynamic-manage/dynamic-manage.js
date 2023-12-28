@@ -6,8 +6,8 @@ import { builderContext, CONTROL_INTERCEPT } from '../builder/builder-context';
 import { PLUGIN_GET_CONFIG } from '../token';
 let DynamicManage = class DynamicManage {
     constructor(injector) {
-        this.injector = injector;
         this.builderCache = new Map();
+        this.injector = Injector.create([], injector);
         builderContext.forwardFormControl(this.formControl);
         builderContext.forwardGetJsonConfig(injector.get(PLUGIN_GET_CONFIG));
         builderContext.registryInjector(this.injector);
