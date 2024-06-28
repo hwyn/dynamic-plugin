@@ -12,13 +12,15 @@ exports.CONTROL_INTERCEPT = di_1.InjectorToken.get('CONTROL_INTERCEPT');
 var builderPackage = function (baseName, parent) {
     var getName = function (name) { return baseName + name; };
     var builderContext = (0, builder_1.useBuilderContext)(parent);
+    var validatorProps = function (name) { return ({ name: name }); };
+    var actionProps = function (name, options) { return ({ name: name, options: options }); };
     var Convert = (0, di_1.makeDecorator)(getName('Convert'), undefined, function (Type, name) {
         builderContext.forwardConvert(name, Type);
     });
-    var Action = (0, di_1.makeDecorator)(getName('Action'), undefined, function (Type, name, options) {
+    var Action = (0, di_1.makeDecorator)(getName('Action'), actionProps, function (Type, name, options) {
         builderContext.forwardAction(name, Type, options);
     });
-    var Validator = (0, di_1.makeDecorator)(getName('Validator'), undefined, function (Type, name) {
+    var Validator = (0, di_1.makeDecorator)(getName('Validator'), validatorProps, function (Type, name) {
         builderContext.forwardType(exports.VALIDATOR, name, Type, 'validator');
     });
     var ControlIntercept = (0, di_1.makeDecorator)(getName('ControlIntercept'), undefined, function (Type) {

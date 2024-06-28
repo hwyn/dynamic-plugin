@@ -7,6 +7,6 @@ export interface PageProps extends BuilderProps {
 }
 export declare function forwardPage<T>(Model: Type<T>, { pageClassName, ...props }: PageProps): Type<T>;
 export interface PageBuilderDecorator {
-    (props: PageProps): <T>(type: Type<T>) => Type<T>;
+    (props: PageProps): ClassDecorator;
 }
 export declare const PageBuilder: PageBuilderDecorator;

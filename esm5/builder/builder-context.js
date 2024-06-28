@@ -9,13 +9,15 @@ export var CONTROL_INTERCEPT = InjectorToken.get('CONTROL_INTERCEPT');
 export var builderPackage = function (baseName, parent) {
     var getName = function (name) { return baseName + name; };
     var builderContext = useBuilderContext(parent);
+    var validatorProps = function (name) { return ({ name: name }); };
+    var actionProps = function (name, options) { return ({ name: name, options: options }); };
     var Convert = makeDecorator(getName('Convert'), undefined, function (Type, name) {
         builderContext.forwardConvert(name, Type);
     });
-    var Action = makeDecorator(getName('Action'), undefined, function (Type, name, options) {
+    var Action = makeDecorator(getName('Action'), actionProps, function (Type, name, options) {
         builderContext.forwardAction(name, Type, options);
     });
-    var Validator = makeDecorator(getName('Validator'), undefined, function (Type, name) {
+    var Validator = makeDecorator(getName('Validator'), validatorProps, function (Type, name) {
         builderContext.forwardType(VALIDATOR, name, Type, 'validator');
     });
     var ControlIntercept = makeDecorator(getName('ControlIntercept'), undefined, function (Type) {

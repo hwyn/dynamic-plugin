@@ -9,10 +9,10 @@ export declare const builderPackage: (baseName: string, parent?: BuilderContext)
     forwardUiElement: (name: string, Element: any) => any;
     forwardHocComponent: (token: InjectorToken, hot: any) => any;
     UIElement: (name: string) => <T>(Type: Type<T>) => any;
-    ControlIntercept: (...args: any[]) => <TFunction extends (new (...args: any[]) => any) & Type<any>>(target: TFunction) => TFunction;
-    Convert: (...args: any[]) => <TFunction extends (new (...args: any[]) => any) & Type<any>>(target: TFunction) => TFunction;
-    Action: (...args: any[]) => <TFunction extends (new (...args: any[]) => any) & Type<any>>(target: TFunction) => TFunction;
-    Validator: (...args: any[]) => <TFunction extends (new (...args: any[]) => any) & Type<any>>(target: TFunction) => TFunction;
-    Extension: (...args: any[]) => <TFunction extends (new (...args: any[]) => any) & Type<any>>(target: TFunction) => TFunction;
+    ControlIntercept: () => import("../../di/decorators").ClassDecorator;
+    Convert: () => import("../../di/decorators").ClassDecorator;
+    Action: (name: string, options?: any) => import("../../di/decorators").ClassDecorator;
+    Validator: (name: string) => import("../../di/decorators").ClassDecorator;
+    Extension: () => import("../../di/decorators").ClassDecorator;
 };
-export declare const builderContext: BuilderContext, forwardUiElement: (name: string, Element: any) => any, forwardHocComponent: (token: InjectorToken, hot: any) => any, UIElement: (name: string) => <T>(Type: Type<T>) => any, Validator: (...args: any[]) => <TFunction extends (new (...args: any[]) => any) & Type<any>>(target: TFunction) => TFunction, ControlIntercept: (...args: any[]) => <TFunction extends (new (...args: any[]) => any) & Type<any>>(target: TFunction) => TFunction, Convert: (...args: any[]) => <TFunction extends (new (...args: any[]) => any) & Type<any>>(target: TFunction) => TFunction, Action: (...args: any[]) => <TFunction extends (new (...args: any[]) => any) & Type<any>>(target: TFunction) => TFunction, Extension: (...args: any[]) => <TFunction extends (new (...args: any[]) => any) & Type<any>>(target: TFunction) => TFunction;
+export declare const builderContext: BuilderContext, forwardUiElement: (name: string, Element: any) => any, forwardHocComponent: (token: InjectorToken, hot: any) => any, UIElement: (name: string) => <T>(Type: Type<T>) => any, Validator: (name: string) => import("../../di/decorators").ClassDecorator, ControlIntercept: () => import("../../di/decorators").ClassDecorator, Convert: () => import("../../di/decorators").ClassDecorator, Action: (name: string, options?: any) => import("../../di/decorators").ClassDecorator, Extension: () => import("../../di/decorators").ClassDecorator;
