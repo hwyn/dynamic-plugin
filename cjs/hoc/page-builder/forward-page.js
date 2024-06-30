@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PageBuilder = exports.forwardPage = void 0;
+exports.PageBuilder = void 0;
+exports.forwardPage = forwardPage;
 var tslib_1 = require("tslib");
 var builder_1 = require("@dynamic/builder");
 var di_1 = require("@fm/di");
@@ -20,5 +21,4 @@ function forwardPage(Model, _a) {
     });
     return Object.defineProperty(Model, 'componentDef', { value: Component, writable: false });
 }
-exports.forwardPage = forwardPage;
 exports.PageBuilder = (0, builder_1.makeBuilderDecorator)('PageBuilder', forwardPage);
