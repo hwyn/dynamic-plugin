@@ -1,4 +1,4 @@
-import { BuilderProps } from '@dynamic/builder';
+import { BuilderProps } from '@hwy-fm/builder';
 export interface ComponentBuilderDecorator {
     (props: BuilderProps): ClassDecorator;
 }

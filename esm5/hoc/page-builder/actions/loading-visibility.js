@@ -1,5 +1,5 @@
 import { __decorate, __extends, __metadata, __param } from "tslib";
-import { BaseAction, CallLink, Visibility } from '@dynamic/builder';
+import { BaseAction, CallLink, Visibility } from '@hwy-fm/builder';
 import { Action } from '../../../builder/builder-context';
 import { OPEN_LOADING } from '../loading.extension';
 var LoadingVisibility = /** @class */ (function (_super) {

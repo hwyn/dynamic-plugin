@@ -1,5 +1,5 @@
-import { BaseAction } from '@dynamic/builder';
-import { MethodProxy } from '@fm/di';
+import { BaseAction } from '@hwy-fm/builder';
+import { MethodProxy } from '@hwy-fm/di';
 export declare class Bind<T = any> extends BaseAction {
     meta: T;
     mp: MethodProxy;

@@ -1,7 +1,7 @@
 import { __assign, __decorate, __extends, __metadata, __param } from "tslib";
 /* eslint-disable no-new-func */
-import { ActionProps, BaseAction, META_TYPE } from '@dynamic/builder';
-import { Inject, MethodProxy } from '@fm/di';
+import { ActionProps, BaseAction, META_TYPE } from '@hwy-fm/builder';
+import { Inject, MethodProxy } from '@hwy-fm/di';
 import { Action } from '../../builder/builder-context';
 var Bind = /** @class */ (function (_super) {
     __extends(Bind, _super);

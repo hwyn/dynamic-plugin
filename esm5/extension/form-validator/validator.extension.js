@@ -1,5 +1,5 @@
 import { __decorate, __extends } from "tslib";
-import { BasicExtension, CALCULATOR, CHANGE, CREATE_CONTROL } from '@dynamic/builder';
+import { BasicExtension, CALCULATOR, CHANGE, CREATE_CONTROL } from '@hwy-fm/builder';
 import { isEmpty } from 'lodash';
 import { CONTROL_INTERCEPT, Extension } from '../../builder/builder-context';
 var ValidatorExtension = /** @class */ (function (_super) {

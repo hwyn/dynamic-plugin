@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoadConfig = void 0;
 var tslib_1 = require("tslib");
-var builder_1 = require("@dynamic/builder");
+var builder_1 = require("@hwy-fm/builder");
 var builder_context_1 = require("../../builder/builder-context");
 var LoadConfig = /** @class */ (function (_super) {
     tslib_1.__extends(LoadConfig, _super);

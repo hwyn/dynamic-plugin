@@ -1,6 +1,6 @@
 import { __assign, __decorate, __metadata } from "tslib";
-import { GET_TYPE, serializeAction } from '@dynamic/builder';
-import { Inject, Injector, InjectorToken } from '@fm/di';
+import { GET_TYPE, serializeAction } from '@hwy-fm/builder';
+import { Inject, Injector, InjectorToken } from '@hwy-fm/di';
 import { isObservable, of } from 'rxjs';
 import { ControlIntercept as Intercept, VALIDATOR } from '../../builder/builder-context';
 import { BaseValidator } from './base-validator';

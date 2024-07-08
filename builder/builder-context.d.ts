@@ -1,5 +1,5 @@
-import { BuilderContext } from '@dynamic/builder';
-import { InjectorToken, Type } from '@fm/di';
+import { BuilderContext } from '@hwy-fm/builder';
+import { InjectorToken, Type } from '@hwy-fm/di';
 export declare const VALIDATOR: InjectorToken;
 export declare const FORWARD_MICRO: InjectorToken;
 export declare const FORWARD_BUILDER: InjectorToken;

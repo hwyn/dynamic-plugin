@@ -1,5 +1,5 @@
 import { __decorate, __metadata, __param } from "tslib";
-import { Inject, InjectorToken } from '@fm/di';
+import { Inject, InjectorToken } from '@hwy-fm/di';
 import { finalize } from 'rxjs/operators';
 import { PLUGIN_GET_CONFIG, PLUGIN_HTTP_CLIENT } from '../../token';
 export var PAGE_TOKEN = InjectorToken.get('PAGE_TOKEN');

@@ -1,4 +1,4 @@
-import { BaseAction, Visibility } from '@dynamic/builder';
+import { BaseAction, Visibility } from '@hwy-fm/builder';
 export declare class LoadingVisibility extends BaseAction {
     private count;
     private st;

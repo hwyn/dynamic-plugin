@@ -1,5 +1,5 @@
 import { __decorate, __metadata, __param } from "tslib";
-import { ActionProps, BaseAction, Event, generateUUID } from '@dynamic/builder';
+import { ActionProps, BaseAction, Event, generateUUID } from '@hwy-fm/builder';
 import { Action } from '../../builder/builder-context';
 let LoadConfig = class LoadConfig extends BaseAction {
     execute({ grid, jsonField }, source = []) {

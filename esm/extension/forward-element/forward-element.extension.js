@@ -1,5 +1,5 @@
 import { __decorate } from "tslib";
-import { BasicExtension, BuilderEngine } from '@dynamic/builder';
+import { BasicExtension, BuilderEngine } from '@hwy-fm/builder';
 import { Extension } from '../../builder/builder-context';
 import { BUILDER } from '../../constst/ui-element.consts';
 import { BuilderDef } from '../../hoc/forward-builder/builder-def';

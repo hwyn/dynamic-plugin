@@ -1,6 +1,6 @@
 import { __rest } from "tslib";
-import { generateUUID, makeBuilderDecorator } from '@dynamic/builder';
-import { Injector, setInjectableDef } from '@fm/di';
+import { generateUUID, makeBuilderDecorator } from '@hwy-fm/builder';
+import { Injector, setInjectableDef } from '@hwy-fm/di';
 import { forwardBuilder } from '../forward-builder/forward-builder';
 import { LoadConfig } from './actions/load-config';
 import { LoadingExtension } from './loading.extension';

@@ -1,4 +1,4 @@
-import { BasicExtension, BuilderFieldExtensions, CallBackOptions } from '@dynamic/builder';
+import { BasicExtension, BuilderFieldExtensions, CallBackOptions } from '@hwy-fm/builder';
 export declare class ListExtension extends BasicExtension {
     private jsonGrid;
     private proxyFields;

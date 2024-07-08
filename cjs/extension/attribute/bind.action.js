@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Bind = void 0;
 var tslib_1 = require("tslib");
 /* eslint-disable no-new-func */
-var builder_1 = require("@dynamic/builder");
-var di_1 = require("@fm/di");
+var builder_1 = require("@hwy-fm/builder");
+var di_1 = require("@hwy-fm/di");
 var builder_context_1 = require("../../builder/builder-context");
 var Bind = /** @class */ (function (_super) {
     tslib_1.__extends(Bind, _super);

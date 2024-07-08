@@ -1,5 +1,5 @@
 import { __extends } from "tslib";
-import { BasicExtension } from '@dynamic/builder';
+import { BasicExtension } from '@hwy-fm/builder';
 export var OPEN_LOADING = 'openLoading';
 export var CLOSE_LOADING = 'closeLoading';
 var LoadingExtension = /** @class */ (function (_super) {

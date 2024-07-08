@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoadingExtension = exports.CLOSE_LOADING = exports.OPEN_LOADING = void 0;
 var tslib_1 = require("tslib");
-var builder_1 = require("@dynamic/builder");
+var builder_1 = require("@hwy-fm/builder");
 exports.OPEN_LOADING = 'openLoading';
 exports.CLOSE_LOADING = 'closeLoading';
 var LoadingExtension = /** @class */ (function (_super) {

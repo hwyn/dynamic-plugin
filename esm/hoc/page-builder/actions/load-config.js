@@ -1,5 +1,5 @@
 import { __decorate, __metadata, __param, __rest } from "tslib";
-import { ActionProps, BaseAction, Event, LOAD } from '@dynamic/builder';
+import { ActionProps, BaseAction, Event, LOAD } from '@hwy-fm/builder';
 import { Action } from '../../../builder/builder-context';
 import { BUILDER, LOADING } from '../../../constst/ui-element.consts';
 import { CLOSE_LOADING, OPEN_LOADING } from '../loading.extension';

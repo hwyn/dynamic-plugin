@@ -1,4 +1,4 @@
-import { BasicExtension } from '@dynamic/builder';
+import { BasicExtension } from '@hwy-fm/builder';
 export const OPEN_LOADING = 'openLoading';
 export const CLOSE_LOADING = 'closeLoading';
 export class LoadingExtension extends BasicExtension {

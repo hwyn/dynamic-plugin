@@ -1,5 +1,5 @@
 import { __assign, __decorate, __extends, __metadata, __param } from "tslib";
-import { ActionProps, BaseAction, Event, generateUUID } from '@dynamic/builder';
+import { ActionProps, BaseAction, Event, generateUUID } from '@hwy-fm/builder';
 import { Action } from '../../builder/builder-context';
 var LoadConfig = /** @class */ (function (_super) {
     __extends(LoadConfig, _super);

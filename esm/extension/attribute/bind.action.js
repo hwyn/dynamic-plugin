@@ -1,7 +1,7 @@
 import { __decorate, __metadata, __param } from "tslib";
 /* eslint-disable no-new-func */
-import { ActionProps, BaseAction, META_TYPE } from '@dynamic/builder';
-import { Inject, MethodProxy } from '@fm/di';
+import { ActionProps, BaseAction, META_TYPE } from '@hwy-fm/builder';
+import { Inject, MethodProxy } from '@hwy-fm/di';
 import { Action } from '../../builder/builder-context';
 let Bind = class Bind extends BaseAction {
     parseTemplate(code) {

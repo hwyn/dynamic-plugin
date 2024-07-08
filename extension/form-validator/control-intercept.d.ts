@@ -1,5 +1,5 @@
-import { ControlOptions, FormControl, FormOptions } from '@dynamic/builder';
-import { Injector, InjectorToken } from '@fm/di';
+import { ControlOptions, FormControl, FormOptions } from '@hwy-fm/builder';
+import { Injector, InjectorToken } from '@hwy-fm/di';
 export declare const CREATE_FORM_CONTROL: InjectorToken;
 export declare class ControlIntercept {
     private injector;

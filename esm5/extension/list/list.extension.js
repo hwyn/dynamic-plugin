@@ -1,5 +1,5 @@
 import { __assign, __decorate, __extends, __rest } from "tslib";
-import { BasicExtension, BuilderModel, DATA_SOURCE } from '@dynamic/builder';
+import { BasicExtension, BuilderModel, DATA_SOURCE } from '@hwy-fm/builder';
 import { isEmpty } from 'lodash';
 import { Extension } from '../../builder/builder-context';
 import { forwardBuilder } from '../../hoc/forward-builder/forward-builder';

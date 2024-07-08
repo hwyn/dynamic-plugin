@@ -1,4 +1,4 @@
-import { BaseAction, BasicExtension } from '@dynamic/builder';
+import { BaseAction, BasicExtension } from '@hwy-fm/builder';
 import { Observable } from 'rxjs';
 export declare class AttributeExtension extends BasicExtension {
     private inherent;

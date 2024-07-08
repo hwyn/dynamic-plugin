@@ -1,4 +1,4 @@
-import { BaseAction, BasicExtension, CallBackOptions } from '@dynamic/builder';
+import { BaseAction, BasicExtension, CallBackOptions } from '@hwy-fm/builder';
 import { Observable } from 'rxjs';
 export declare class ValidatorExtension extends BasicExtension {
     private validatorFields;

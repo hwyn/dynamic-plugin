@@ -1,4 +1,4 @@
-import { InjectorToken } from '@fm/di';
+import { InjectorToken } from '@hwy-fm/di';
 import { Observable } from 'rxjs';
 export declare const PAGE_TOKEN: InjectorToken;
 export declare class ProxyHttp {

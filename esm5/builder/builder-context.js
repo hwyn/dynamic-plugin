@@ -1,7 +1,7 @@
 var _a;
 /* eslint-disable max-lines-per-function */
-import { useBuilderContext } from '@dynamic/builder';
-import { InjectorToken, makeDecorator } from '@fm/di';
+import { useBuilderContext } from '@hwy-fm/builder';
+import { InjectorToken, makeDecorator } from '@hwy-fm/di';
 export var VALIDATOR = InjectorToken.get('VALIDATOR');
 export var FORWARD_MICRO = InjectorToken.get('FORWARD_MICRO');
 export var FORWARD_BUILDER = InjectorToken.get('FORWARD_BUILDER');

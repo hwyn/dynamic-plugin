@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProxyHttp = exports.PAGE_TOKEN = void 0;
 var tslib_1 = require("tslib");
-var di_1 = require("@fm/di");
+var di_1 = require("@hwy-fm/di");
 var operators_1 = require("rxjs/operators");
 var token_1 = require("../../token");
 exports.PAGE_TOKEN = di_1.InjectorToken.get('PAGE_TOKEN');

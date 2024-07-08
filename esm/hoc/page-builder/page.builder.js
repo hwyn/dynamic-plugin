@@ -1,5 +1,5 @@
-import { BuilderModel, GET_JSON_CONFIG } from '@dynamic/builder';
-import { Injector } from '@fm/di';
+import { BuilderModel, GET_JSON_CONFIG } from '@hwy-fm/builder';
+import { Injector } from '@hwy-fm/di';
 import { PLUGIN_HISTORY } from '../../token';
 import { PAGE_TOKEN, ProxyHttp } from './proxy-http';
 export class PageBuilder extends BuilderModel {

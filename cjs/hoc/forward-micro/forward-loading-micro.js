@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.forwardLoadingMicro = void 0;
-var builder_1 = require("@dynamic/builder");
+var builder_1 = require("@hwy-fm/builder");
 var ui_element_consts_1 = require("../../constst/ui-element.consts");
 var forward_builder_1 = require("../forward-builder/forward-builder");
 var forward_micro_1 = require("./forward-micro");

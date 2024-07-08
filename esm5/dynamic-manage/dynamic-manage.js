@@ -1,6 +1,6 @@
 import { __assign, __decorate, __metadata } from "tslib";
-import { FACTORY_BUILDER, generateUUID } from '@dynamic/builder';
-import { Injectable, Injector } from '@fm/di';
+import { FACTORY_BUILDER, generateUUID } from '@hwy-fm/builder';
+import { Injectable, Injector } from '@hwy-fm/di';
 import { omitBy } from 'lodash';
 import { builderContext, CONTROL_INTERCEPT } from '../builder/builder-context';
 import { PLUGIN_GET_CONFIG } from '../token';

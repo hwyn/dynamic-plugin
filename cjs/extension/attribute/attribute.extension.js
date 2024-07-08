@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AttributeExtension = void 0;
 var tslib_1 = require("tslib");
-var builder_1 = require("@dynamic/builder");
+var builder_1 = require("@hwy-fm/builder");
 var lodash_1 = require("lodash");
 var builder_context_1 = require("../../builder/builder-context");
 var bind_action_1 = require("./bind.action");

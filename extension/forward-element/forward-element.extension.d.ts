@@ -1,4 +1,4 @@
-import { BasicExtension, BuilderEngine, BuilderFieldExtensions } from '@dynamic/builder';
+import { BasicExtension, BuilderEngine, BuilderFieldExtensions } from '@hwy-fm/builder';
 import { Observable } from 'rxjs';
 export declare class ForwardElementExtension extends BasicExtension {
     protected engine: BuilderEngine;

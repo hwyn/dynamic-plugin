@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PageBuilder = void 0;
 var tslib_1 = require("tslib");
-var builder_1 = require("@dynamic/builder");
-var di_1 = require("@fm/di");
+var builder_1 = require("@hwy-fm/builder");
+var di_1 = require("@hwy-fm/di");
 var token_1 = require("../../token");
 var proxy_http_1 = require("./proxy-http");
 var PageBuilder = /** @class */ (function (_super) {

@@ -1,4 +1,4 @@
-import { BuilderModel, MOUNTED, Visibility } from '@dynamic/builder';
+import { BuilderModel, MOUNTED, Visibility } from '@hwy-fm/builder';
 import { LOADING } from '../../constst/ui-element.consts';
 import { forwardBuilder } from '../forward-builder/forward-builder';
 import { forwardMicro } from './forward-micro';

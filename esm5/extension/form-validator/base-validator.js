@@ -1,5 +1,5 @@
 import { __extends } from "tslib";
-import { BaseType } from '@dynamic/builder';
+import { BaseType } from '@hwy-fm/builder';
 var BaseValidator = /** @class */ (function (_super) {
     __extends(BaseValidator, _super);
     function BaseValidator() {

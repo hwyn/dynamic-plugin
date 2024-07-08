@@ -1,4 +1,4 @@
-import { Additional, BuilderFieldExtensions } from '@dynamic/builder';
+import { Additional, BuilderFieldExtensions } from '@hwy-fm/builder';
 export interface RenderPropsModel {
     fields?: BuilderFieldExtensions[];
     className?: string;

@@ -1,5 +1,5 @@
 import { __assign, __decorate, __extends } from "tslib";
-import { BasicExtension, CALCULATOR, LOAD } from '@dynamic/builder';
+import { BasicExtension, CALCULATOR, LOAD } from '@hwy-fm/builder';
 import { isString } from 'lodash';
 import { Extension } from '../../builder/builder-context';
 import { Bind } from './bind.action';
