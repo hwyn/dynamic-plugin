@@ -9,10 +9,10 @@ export declare const builderPackage: (baseName: string, parent?: BuilderContext)
     forwardUiElement: (name: string, Element: any) => any;
     forwardHocComponent: (token: InjectorToken, hot: any) => any;
     UIElement: (name: string) => <T>(Type: Type<T>) => any;
-    ControlIntercept: () => ClassDecorator;
-    Convert: () => ClassDecorator;
-    Action: (name: string, options?: any) => ClassDecorator;
-    Validator: (name: string) => ClassDecorator;
-    Extension: () => ClassDecorator;
+    ControlIntercept: () => import("../../di/decorators").ClassDecorator<any>;
+    Convert: () => import("../../di/decorators").ClassDecorator<any>;
+    Action: (name: string, options?: any) => import("../../di/decorators").ClassDecorator<any>;
+    Validator: (name: string) => import("../../di/decorators").ClassDecorator<any>;
+    Extension: () => import("../../di/decorators").ClassDecorator<any>;
 };
-export declare const builderContext: BuilderContext, forwardUiElement: (name: string, Element: any) => any, forwardHocComponent: (token: InjectorToken, hot: any) => any, UIElement: (name: string) => <T>(Type: Type<T>) => any, Validator: (name: string) => ClassDecorator, ControlIntercept: () => ClassDecorator, Convert: () => ClassDecorator, Action: (name: string, options?: any) => ClassDecorator, Extension: () => ClassDecorator;
+export declare const builderContext: BuilderContext, forwardUiElement: (name: string, Element: any) => any, forwardHocComponent: (token: InjectorToken, hot: any) => any, UIElement: (name: string) => <T>(Type: Type<T>) => any, Validator: (name: string) => import("../../di/decorators").ClassDecorator<any>, ControlIntercept: () => import("../../di/decorators").ClassDecorator<any>, Convert: () => import("../../di/decorators").ClassDecorator<any>, Action: (name: string, options?: any) => import("../../di/decorators").ClassDecorator<any>, Extension: () => import("../../di/decorators").ClassDecorator<any>;

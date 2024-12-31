@@ -7,7 +7,7 @@ export declare class ValidatorExtension extends BasicExtension {
     protected extension(): void | Observable<any>;
     protected addFieldCalculators([jsonField, builderField]: CallBackOptions): void;
     protected addTouchedCalculator(jsonField: any): {
-        action: import("../../../dynamic-builder").Action;
+        action: import("@hwy-fm/builder").Action;
         dependents: {
             type: any;
             fieldId: any;
